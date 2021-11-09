@@ -11,12 +11,12 @@ onready var camera := $CameraIn/Camera
 
 # camera properties
 
-export var up_limit := -0.6
-export var low_limit := 0.2
+export var up_limit := -55
+export var low_limit := 20
 
 # mouse properties
 
-export (float, 0.001, 0.1) var mouse_sensitivity = 0.005
+export (float, 0.001, 0.1) var mouse_sensitivity = 0.003
 export (bool) var invert_y = false
 export (bool) var invert_x = false
 
@@ -37,6 +37,6 @@ func _unhandled_input(event):
 			camera_in.rotate_object_local(Vector3.RIGHT, dir * event.relative.y * mouse_sensitivity)
 
 func _process(delta):
-	camera_in.rotation.x = clamp(camera_in.rotation.x, up_limit, low_limit)
+	camera_in.rotation.x = clamp(camera_in.rotation.x, deg2rad(up_limit), deg2rad(low_limit))
 	if target:
 		global_transform.origin = get_node(target).global_transform.origin
