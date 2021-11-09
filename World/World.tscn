@@ -8,11 +8,5 @@
 [node name="Player" parent="." index="0" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21688, 0.550301 )
 
-[node name="Cube001" parent="Camera" index="0"]
-transform = Transform( -1, -1.61905e-07, -1.81081e-07, 1.61905e-07, 0.111469, -0.993768, 1.81081e-07, -0.993768, -0.111469, 0, -1.17628, 0.149815 )
-
-[node name="Camera_Orientation" parent="Camera" index="1"]
-visible = false
-
 [editable path="Player"]
 [editable path="Player/Camera"]
