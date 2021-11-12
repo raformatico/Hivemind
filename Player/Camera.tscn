@@ -3,10 +3,11 @@
 [ext_resource path="res://Player/Camera.gd" type="Script" id=1]
 
 [node name="Camera" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 script = ExtResource( 1 )
 
 [node name="CameraIn" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0, 0 )
 
-[node name="Camera" type="Camera" parent="CameraIn"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.454, 1 )
+[node name="Camera" type="ClippedCamera" parent="CameraIn"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
