@@ -22,4 +22,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9383, 0 )
 [node name="Camera" parent="Camera/CameraIn" index="0"]
 far = 165.0
 
+[node name="glide_timer" type="Timer" parent="." index="4"]
+wait_time = 10.0
+one_shot = true
+
+[node name="glide_reset" type="Timer" parent="." index="5"]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="glide_timer" to="." method="_on_glide_timer_timeout"]
+
 [editable path="Camera"]

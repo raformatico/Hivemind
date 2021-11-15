@@ -46,7 +46,6 @@ data = PoolVector3Array( -0.0816, -0.1163, -1.7207, 0.0692, 0.1541, -2.2339, -0.
 
 [node name="Player" parent="." index="0" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.15925, 0 )
-jump = 10
 
 [node name="Camera" parent="Player/Camera/CameraIn" index="0"]
 environment = ExtResource( 6 )
