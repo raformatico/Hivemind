@@ -20,11 +20,14 @@ var gravity_vector = Vector3()
 var movement = Vector3()
 
 var acceleration = acceleration_floor
-onready var body := $Body
+onready var body :=  $Body
 onready var camera := $Camera
 
 
 func _ready() -> void:
+	if get_node("PhilosopherBug") !=null:
+		 body=$PhilosopherBug 
+
 	body.set_as_toplevel(true)
 
 

@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/cell.obj-3bb0c580b7bd7c8151e708c812bd29b9.mesh"
+
+[deps]
+
+files=[ "res://.import/cell.obj-3bb0c580b7bd7c8151e708c812bd29b9.mesh" ]
+
+source_file="res://Objects/Hive/cell.obj"
+dest_files=[ "res://.import/cell.obj-3bb0c580b7bd7c8151e708c812bd29b9.mesh", "res://.import/cell.obj-3bb0c580b7bd7c8151e708c812bd29b9.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

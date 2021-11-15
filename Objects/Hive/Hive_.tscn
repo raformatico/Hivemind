@@ -1,0 +1,133 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Objects/Hive/Cell.tscn" type="PackedScene" id=1]
+
+[node name="Hive" type="Spatial"]
+
+[node name="Cell" parent="." instance=ExtResource( 1 )]
+
+[node name="Cell2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73406, 0, 0 )
+
+[node name="Cell3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45775, 0, 0 )
+
+[node name="Cell10" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.523555, 0, 0.851992, 0, 1, 0, -0.851992, 0, 0.523555, 5.13664, 0, 0 )
+
+[node name="Cell4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.844091, 0, -1.40263 )
+
+[node name="Cell5" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.522752, 0, -0.852485, 0, 1, 0, 0.852485, 0, -0.522752, 2.57815, 0, -1.40263 )
+
+[node name="Cell6" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.30184, 0, -1.40263 )
+
+[node name="Cell7" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.844091, 0, 1.48161 )
+
+[node name="Cell8" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.57815, 0, 1.48161 )
+
+[node name="Cell9" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.432054, 0, -0.901848, 0, 1, 0, 0.901848, 0, 0.432054, 4.30184, 0, 1.48161 )
+
+[node name="Cell41" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.988967, 0, 0.148137, 0, 1, 0, -0.148137, 0, -0.988967, 6.01789, 0, 1.48161 )
+
+[node name="Cell11" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.822501, 0, 4.29889 )
+
+[node name="Cell12" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55656, 0, 4.29889 )
+
+[node name="Cell13" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.28025, 0, 4.29889 )
+
+[node name="Cell14" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.523555, 0, 0.851992, 0, 1, 0, -0.851992, 0, 0.523555, 5.95914, 0, 4.29889 )
+
+[node name="Cell15" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66659, 0, 2.89626 )
+
+[node name="Cell16" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.522752, 0, -0.852485, 0, 1, 0, 0.852485, 0, -0.522752, 3.40065, 0, 2.89626 )
+
+[node name="Cell17" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.12434, 0, 2.89626 )
+
+[node name="Cell18" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66659, 0, 5.78049 )
+
+[node name="Cell19" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.40065, 0, 5.78049 )
+
+[node name="Cell20" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.432054, 0, -0.901848, 0, 1, 0, 0.901848, 0, 0.432054, 5.12434, 0, 5.78049 )
+
+[node name="Cell21" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7702, 0, 0 )
+
+[node name="Cell22" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.50426, 0, 0 )
+
+[node name="Cell23" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.228, 0, 0 )
+
+[node name="Cell24" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.523555, 0, 0.851992, 0, 1, 0, -0.851992, 0, 0.523555, 11.9068, 0, 0 )
+
+[node name="Cell25" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.61429, 0, -1.40263 )
+
+[node name="Cell26" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.522752, 0, -0.852485, 0, 1, 0, 0.852485, 0, -0.522752, 9.34835, 0, -1.40263 )
+
+[node name="Cell27" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.072, 0, -1.40263 )
+
+[node name="Cell28" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.61429, 0, 1.48161 )
+
+[node name="Cell29" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.34835, 0, 1.48161 )
+
+[node name="Cell30" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.432054, 0, -0.901848, 0, 1, 0, 0.901848, 0, 0.432054, 11.072, 0, 1.48161 )
+
+[node name="Cell31" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5927, 0, 4.29889 )
+
+[node name="Cell32" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.32676, 0, 4.29889 )
+
+[node name="Cell33" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0505, 0, 4.29889 )
+
+[node name="Cell34" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.523555, 0, 0.851992, 0, 1, 0, -0.851992, 0, 0.523555, 12.7293, 0, 4.29889 )
+
+[node name="Cell35" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.43679, 0, 2.89626 )
+
+[node name="Cell42" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.457098, 0, -0.889416, 0, 1, 0, 0.889416, 0, -0.457098, 6.75127, 0, 2.89626 )
+
+[node name="Cell36" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.522752, 0, -0.852485, 0, 1, 0, 0.852485, 0, -0.522752, 10.1709, 0, 2.89626 )
+
+[node name="Cell37" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8945, 0, 2.89626 )
+
+[node name="Cell38" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.43679, 0, 5.78049 )
+
+[node name="Cell39" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1709, 0, 5.78049 )
+
+[node name="Cell40" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.432054, 0, -0.901848, 0, 1, 0, 0.901848, 0, 0.432054, 11.8945, 0, 5.78049 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.17143, 0.985196, 0, -0.985196, -0.17143, 6.2764, 13.9503, -0.0419922 )

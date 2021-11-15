@@ -1,0 +1,194 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Objects/Hive/cell.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Objects/Hive/Larvae.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Hive/hive_cell.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape" id=1]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("larvae:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, -2.8331, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("larvae:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 44.322, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("larvae:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.6, 0.6, 0.6 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "coming"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("larvae:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 3.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -2.8331, 0 ), Vector3( 0, -2.42864, 0 ), Vector3( 0, -0.560112, 0 ), Vector3( 0, -0.174158, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("larvae:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.5, 3.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 44.322, 0 ), Vector3( 0, 44.322, 0 ), Vector3( 0, -34.047, 0 ), Vector3( 0, -7.83499, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("larvae:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4, 2.2, 3, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.6, 0.6, 0.6 ), Vector3( 0.65, 0.65, 0.65 ), Vector3( 0.6, 0.6, 0.6 ), Vector3( 0.65, 0.65, 0.65 ), Vector3( 0.6, 0.6, 0.6 ), Vector3( 0.65, 0.65, 0.65 ), Vector3( 0.6, 0.6, 0.6 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "going"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("larvae:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -0.174158, 0 ), Vector3( 0, -3.13387, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("larvae:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 6 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 44.322, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "hidden"
+tracks/0/type = "value"
+tracks/0/path = NodePath("larvae:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.6, 0.6, 0.6 ), Vector3( 0.6, 0.6, 0.6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("larvae:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -3.20441, 0 ), Vector3( 0, -3.20441, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("larvae:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 0.466517 ),
+"update": 0,
+"values": [ Vector3( 0.6, 0.6, 0.6 ), Vector3( 0.65, 0.6, 0.65 ), Vector3( 0.6, 0.6, 0.6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("larvae:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -7.83499, 0 ), Vector3( 2.22536, 8.31832, 0.325287 ), Vector3( 0, -7.83499, 0 ) ]
+}
+
+[node name="Cell" type="StaticBody"]
+script = ExtResource( 3 )
+
+[node name="mesh" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="collisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="larvae" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.429255, 0, 0.419214, 0, 0.6, 0, -0.419214, 0, 0.429255, 0, -2.8331, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "hidden"
+anims/RESET = SubResource( 2 )
+anims/coming = SubResource( 3 )
+anims/going = SubResource( 4 )
+anims/hidden = SubResource( 5 )
+anims/idle = SubResource( 6 )
+
+[connection signal="mouse_entered" from="." to="." method="_on_Cell_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Cell_mouse_exited"]

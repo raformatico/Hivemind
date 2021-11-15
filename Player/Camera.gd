@@ -22,13 +22,14 @@ export (bool) var invert_x = false
 
 export var joystick_sensitivity = 1
 
-var direction
+var direction = 1   # Undefined value triggers error
 
 func get_global_transformation() -> Vector3:
 	return camera.global_transform
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	# Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _unhandled_input(event):
 	direction = 1 if invert_y else -1

@@ -1,0 +1,76 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Player/model/idle.anim" type="Animation" id=1]
+[ext_resource path="res://Player/model/walk.anim" type="Animation" id=2]
+[ext_resource path="res://Player/model/Happy Idle.fbx" type="PackedScene" id=3]
+[ext_resource path="res://Player/model/float.anim" type="Animation" id=4]
+[ext_resource path="res://Player/model/run.anim" type="Animation" id=5]
+[ext_resource path="res://Player/model/textures/Piel/Piel_Material.001_Roughness.png" type="Texture" id=6]
+[ext_resource path="res://Player/model/textures/Piel/Piel_Material.001_AO.png" type="Texture" id=7]
+[ext_resource path="res://Player/model/textures/Piel/Piel_Material.001_Normal.png" type="Texture" id=8]
+[ext_resource path="res://Player/model/textures/Piel/Piel_Material.001_Albedo.png" type="Texture" id=9]
+[ext_resource path="res://Player/model/textures/Piel/Piel_Material.001_Metalness.png" type="Texture" id=10]
+
+[sub_resource type="SpatialMaterial" id=1]
+vertex_color_use_as_albedo = true
+params_diffuse_mode = 3
+params_specular_mode = 1
+albedo_texture = ExtResource( 9 )
+metallic_texture = ExtResource( 10 )
+roughness_texture = ExtResource( 6 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 8 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 7 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "walk"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "run"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "float"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "float"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=6]
+blend_point_0/node = SubResource( 2 )
+blend_point_0/pos = Vector2( 0, 0 )
+blend_point_1/node = SubResource( 3 )
+blend_point_1/pos = Vector2( 2.1, 0 )
+blend_point_2/node = SubResource( 4 )
+blend_point_2/pos = Vector2( 7.8, 0 )
+blend_point_3/node = SubResource( 5 )
+blend_point_3/pos = Vector2( 2.3, 0.3 )
+blend_point_4/node = SubResource( 7 )
+blend_point_4/pos = Vector2( 6.4, 0.5 )
+max_space = Vector2( 10, 1 )
+x_label = "speed"
+
+[node name="PhilosopherBug" instance=ExtResource( 3 )]
+transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0 )
+
+[node name="unamed" parent="RootNode" index="1"]
+material/0 = SubResource( 1 )
+
+[node name="AnimationPlayer" parent="RootNode" index="3"]
+autoplay = "idle"
+anims/float = ExtResource( 4 )
+anims/idle = ExtResource( 1 )
+anims/run = ExtResource( 5 )
+anims/walk = ExtResource( 2 )
+
+[node name="AnimationTree" type="AnimationTree" parent="RootNode" index="4"]
+tree_root = SubResource( 6 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/blend_position = Vector2( 1.926, 0.482759 )

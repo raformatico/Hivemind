@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "KinematicBody",
 "class": "Player",
 "language": "GDScript",
-"path": "res://Player/Player.gd"
+"path": "res://Player/PlayerBug.gd"
 } ]
 _global_script_class_icons={
 "Player": ""
@@ -21,14 +21,13 @@ _global_script_class_icons={
 [application]
 
 config/name="Hivemind"
-run/main_scene="res://World/World.tscn"
+run/main_scene="res://World/WorldBugatti-jjramos.tscn"
 config/icon="res://icon.png"
 
 [display]
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
 
 [input]
 
