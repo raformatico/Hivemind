@@ -33,16 +33,27 @@ onready var glide_reset := $glide_reset
 
 var characterAnimationTree
 
+var character_version="v0"
+var animation_state
+var hovering_=false
+
 func _ready() -> void:
+	#remove ifs when definitive character is ready.
 	if get_node("PhilosopherBug") !=null:
 		body=$PhilosopherBug 
 		characterAnimationTree=$PhilosopherBug/RootNode/AnimationTree
 	elif get_node("bugatti") !=null:
 		body=$bugatti 	
 		characterAnimationTree=$bugatti/AnimationTree
+		character_version="v0"
+	elif get_node("bugattiv1") !=null:
+		body=$bugattiv1 	
+		characterAnimationTree=$bugattiv1/AnimationTree
+		animation_state = characterAnimationTree.get("parameters/playback")
+		animation_state.start("Idle_loop")
+		character_version="v1"
 		
 	body.set_as_toplevel(true)
-
 
 func _process(delta: float) -> void:
 	# Translate body to follow KinematicBody
@@ -100,6 +111,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor() and glide_timer.is_stopped():
 		snap = Vector3.ZERO
 		gravity_vector = Vector3.UP * jump
+		animation_state.travel("Jump")
 	
 	#make it move
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
@@ -112,11 +124,25 @@ func _physics_process(delta: float) -> void:
 
 	var velocity_=velocity
 	
-	# the speed triggers the blended animation
-	characterAnimationTree["parameters/blend_position"].x=velocity_.length()
-	characterAnimationTree["parameters/blend_position"].y=gravity_vector.length()
-	#print(velocity.length()/speed,velocity_.length())
-	
+	if character_version=="v0":
+		# the speed triggers the blended animation
+		characterAnimationTree["parameters/blend_position"].x=velocity_.length()
+		characterAnimationTree["parameters/blend_position"].y=gravity_vector.length()
+		#print(velocity.length()/speed,velocity_.length())
+	elif character_version=="v1":
+		var state_machine = characterAnimationTree["parameters/playback"]
+		#print(velocity_.length())
+		if not hovering_ and is_on_floor():
+			if velocity_.length()>0:
+				state_machine.travel("Moving_loop")
+				characterAnimationTree.set("parameters/Moving_loop/blend_position",velocity_.length())	
+				#print(state_machine.get_travel_path("Jump"))
+				#characterAnimationTree["parameters/blend_position"].x=velocity_.length()
+			else:
+				# state_machine.travel("Idle-loop")
+				#print("Loop")
+				state_machine.travel("Idle_loop")
+		
 #func stop():
 #	$PhilosopherBug/RootNode/AnimationPlayer.play("idle")
 #	#$PhilosopherBug/RootNode/AnimationTree.
@@ -134,8 +160,14 @@ func _on_glide():
 	speed = speed_glide
 	gravity = gravity_glide
 	snap = Vector3.DOWN
+	
+	hovering_=true
+	animation_state.travel("Hover_loop")
 
 func _out_of_glide():
 	print("Glide_out")
 	speed = speed_default
 	gravity = gravity_default
+
+	hovering_=false	
+	#animation_state.travel("Moving_loop")
