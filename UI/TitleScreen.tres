@@ -1,0 +1,23 @@
+[gd_resource type="Theme" load_steps=5 format=2]
+
+[ext_resource path="res://UI/font_normalsize.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.278431, 0.227451, 0.364706, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.137255, 0.109804, 0.184314, 1 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.137255, 0.109804, 0.184314, 1 )
+
+[resource]
+default_font = ExtResource( 1 )
+Button/styles/focus = null
+Button/styles/hover = SubResource( 1 )
+Button/styles/normal = SubResource( 2 )
+Button/styles/pressed = SubResource( 3 )
