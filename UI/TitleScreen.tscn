@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/TitleScreen.tres" type="Theme" id=1]
+[ext_resource path="res://UI/TitleScreen.gd" type="Script" id=2]
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_right = 0.021
+anchor_bottom = 0.019
+margin_left = 960.0
+margin_top = 24.0
+margin_right = 968.68
+margin_bottom = 38.48
+focus_neighbour_top = NodePath("../Button4")
+focus_neighbour_bottom = NodePath("../Button2")
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="."]
+anchor_right = 0.021
+anchor_bottom = 0.019
+margin_left = 1800.0
+margin_top = 537.0
+margin_right = 1800.68
+margin_bottom = 551.48
+focus_neighbour_top = NodePath("../Button")
+focus_neighbour_bottom = NodePath("../Button3")
+text = "2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="."]
+anchor_right = 0.021
+anchor_bottom = 0.019
+margin_left = 967.0
+margin_top = 947.0
+margin_right = 967.68
+margin_bottom = 961.48
+focus_neighbour_top = NodePath("../Button2")
+focus_neighbour_bottom = NodePath("../Button4")
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button4" type="Button" parent="."]
+anchor_right = 0.021
+anchor_bottom = 0.019
+margin_left = 68.0
+margin_top = 426.0
+margin_right = 68.68
+margin_bottom = 440.48
+focus_neighbour_top = NodePath("../Button3")
+focus_neighbour_bottom = NodePath("../Button")
+text = "4"
+__meta__ = {
+"_edit_use_anchors_": false
+}

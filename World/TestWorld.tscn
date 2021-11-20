@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/bugatti/PlayerBugatti.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Obstacle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.117647, 0.113725, 0.168627, 1 )
@@ -16,8 +17,9 @@ extents = Vector3( 50, 0.1, 50 )
 
 [node name="Spatial" type="Spatial"]
 
+[node name="PauseMenu" parent="." instance=ExtResource( 3 )]
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59237, 0 )
 
 [node name="Floor" type="StaticBody" parent="."]
 
