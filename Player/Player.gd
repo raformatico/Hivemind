@@ -1,5 +1,5 @@
 extends KinematicBody
-class_name Player
+class_name Player_old
 
 export var acceleration_floor = 10
 export var acceleration_air = 1
@@ -37,7 +37,6 @@ func _process(delta: float) -> void:
 	# Rotate body to point to the movement
 	if direction != Vector3.ZERO:
 		body.rotation.y = lerp_angle(body.rotation.y, atan2(-direction.x, -direction.z), angular_velocity * delta)
-
 func _physics_process(delta: float) -> void:
 	
 	#get keyboard input

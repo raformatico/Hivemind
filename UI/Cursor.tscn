@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/crosshairs_tilesheet_white.png" type="Texture" id=1]
+[ext_resource path="res://UI/Cursor.gd" type="Script" id=2]
+
+[node name="Cursor" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_left = 910.0
+margin_top = 490.0
+margin_right = 1010.0
+margin_bottom = 590.0
+rect_min_size = Vector2( 100, 100 )
+mouse_filter = 2
+
+[node name="Sprite" type="Sprite" parent="CenterContainer/HBoxContainer"]
+texture = ExtResource( 1 )
+centered = false
+hframes = 20
+vframes = 10
+frame = 56
