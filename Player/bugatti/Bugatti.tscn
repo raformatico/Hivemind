@@ -19,12 +19,12 @@ animation = "Hover·loop"
 blend_point_0/node = SubResource( 1 )
 blend_point_0/pos = Vector2( 0, 0 )
 blend_point_1/node = SubResource( 2 )
-blend_point_1/pos = Vector2( 1, 0 )
+blend_point_1/pos = Vector2( 7, 0 )
 blend_point_2/node = SubResource( 3 )
-blend_point_2/pos = Vector2( 2.3, 0 )
+blend_point_2/pos = Vector2( 12, 0 )
 blend_point_3/node = SubResource( 4 )
-blend_point_3/pos = Vector2( 1, 0.9 )
-max_space = Vector2( 3, 1 )
+blend_point_3/pos = Vector2( 5, 1 )
+max_space = Vector2( 12, 1 )
 
 [node name="BUGATTI_ACTIONS" instance=ExtResource( 1 )]
 
@@ -35,4 +35,4 @@ material/0 = ExtResource( 2 )
 tree_root = SubResource( 5 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/blend_position = Vector2( 0.976096, -0.0517242 )
+parameters/blend_position = Vector2( 9.67692, -0.112069 )
