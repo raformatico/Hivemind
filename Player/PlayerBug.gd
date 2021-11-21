@@ -17,11 +17,16 @@ export var speed_default := 7
 export var speed_glide := 12
 export var gliding_factor := 2
 
+enum states {IDLE, WALK, RUN, GLIDE, MIND, JUMP}
 var snap
 var direction = Vector3()
 var velocity = Vector3()
 var gravity_vector = Vector3()
 var movement = Vector3()
+
+signal in_mind
+signal out_mind
+signal move_beetle(position)
 
 onready var acceleration := acceleration_floor
 onready var speed := speed_default
@@ -31,13 +36,17 @@ onready var camera := $Camera
 onready var glide_timer := $glide_timer
 onready var glide_reset := $glide_reset
 
+var center := Vector2.ZERO
+var last_intersection = null
 var characterAnimationTree
-
+var state
 var character_version="v0"
 var animation_state
 var hovering_=false
 
 func _ready() -> void:
+	center = get_viewport().size/2
+	state = states.IDLE
 	#remove ifs when definitive character is ready.
 	if get_node("PhilosopherBug") !=null:
 		body=$PhilosopherBug 
@@ -68,13 +77,29 @@ func _physics_process(delta: float) -> void:
 	#get keyboard input
 	direction = Vector3.ZERO
 	#TODO review move_right and left
-	var h_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	var h_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	var f_input = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
 	var direction_keys = Vector3(h_input, 0, f_input)
 	# Get radians of camera rotation around Y axis
 	var camera_rotation = camera.get_global_transformation().basis.get_euler().y
 	# Rotate keys around Y by camera rotation
 	direction = direction_keys.rotated(Vector3.UP, camera_rotation).normalized()
+	
+	match state:
+		states.IDLE:
+			pass
+		states.GLIDE:
+			pass
+		states.RUN:
+			pass
+		states.MIND:
+			body.rotation.y = camera_rotation
+			direction = Vector3.ZERO
+		states.JUMP:
+			pass
+		states.WALK:
+			pass
+		
 	
 	#jumping and gravity
 	if is_on_floor():
@@ -93,8 +118,42 @@ func _physics_process(delta: float) -> void:
 			acceleration = acceleration_air
 		gravity_vector += Vector3.DOWN * gravity * delta
 	
+	if Input.is_action_pressed("mind_connection") and state == states.MIND:
+		var space_state = get_world().direct_space_state
+		var rayOrigin = camera.camera.project_ray_origin(center)
+		var rayEnd = rayOrigin + camera.camera.project_ray_normal(center) * 2000
+		var intersection = space_state.intersect_ray(rayOrigin, rayEnd)
+					
+		if intersection.empty():
+			if last_intersection != null:
+					last_intersection.collider.move(Vector3.ZERO)
+					last_intersection = null
+		elif intersection.collider.is_in_group("Beetle"):
+			last_intersection = intersection
+			emit_signal("move_beetle",intersection.position)
+		else:
+			if last_intersection != null:
+				emit_signal("move_beetle",Vector3.ZERO)
+				last_intersection = null
+	if Input.is_action_just_released("mind_connection"):
+		if last_intersection != null:
+			emit_signal("move_beetle",Vector3.ZERO)
+			last_intersection = null
+	
+	if Input.is_action_just_pressed("mind_trick"):
+		if state != states.MIND:
+			state = states.MIND
+			emit_signal("in_mind")
+		else:
+			state = states.IDLE
+			if last_intersection != null:
+				last_intersection.collider.move(Vector3.ZERO)
+				last_intersection = null
+			emit_signal("out_mind")
+
 	if Input.is_action_pressed("glide") and not glide_timer.is_stopped():
 		_on_glide()
+		state = states.GLIDE
 	
 	if Input.is_action_just_released("glide"):
 		if not glide_timer.is_stopped():
@@ -150,6 +209,29 @@ func _physics_process(delta: float) -> void:
 #func walk():
 #	$PhilosopherBug/RootNode/AnimationPlayer.play("walk")
 
+func change_state(next_state) -> void:
+	var previous_state = state
+	
+	enter_state(next_state)
+	clean(previous_state)
+
+func enter_state(next_state) -> void:
+	state = next_state
+	match next_state:
+		states.GLIDE:
+			acceleration = acceleration_glide
+			speed = speed_glide
+			gravity = gravity_glide
+			snap = Vector3.DOWN
+			hovering_=true
+			animation_state.travel("Hover_loop")
+
+func clean(previous_state) -> void:
+	match previous_state:
+		states.GLIDE:
+			speed = speed_default
+			gravity = gravity_default
+			hovering_=false
 
 func _on_glide_timer_timeout() -> void:
 	glide_reset.start()
@@ -160,7 +242,6 @@ func _on_glide():
 	speed = speed_glide
 	gravity = gravity_glide
 	snap = Vector3.DOWN
-	
 	hovering_=true
 	animation_state.travel("Hover_loop")
 
