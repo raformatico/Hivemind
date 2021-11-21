@@ -47,7 +47,7 @@ xfade_time = 0.2
 xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=13]
-xfade_time = 1.0
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=14]
 xfade_time = 1.0
@@ -56,7 +56,7 @@ xfade_time = 1.0
 xfade_time = 0.5
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
-xfade_time = 0.1
+xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachine" id=17]
 states/Connect_loop/node = SubResource( 1 )

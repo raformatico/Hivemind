@@ -85,28 +85,145 @@ func _physics_process(delta: float) -> void:
 	# Rotate keys around Y by camera rotation
 	direction = direction_keys.rotated(Vector3.UP, camera_rotation).normalized()
 	
-	match state:
-		states.IDLE:
-			pass
-		states.GLIDE:
-			pass
-		states.RUN:
-			pass
-		states.MIND:
-			body.rotation.y = camera_rotation
-			direction = Vector3.ZERO
-		states.JUMP:
-			pass
-		states.WALK:
-			pass
-		
-	
-	#jumping and gravity
 	if is_on_floor():
 		snap = -get_floor_normal()
 		if glide_timer.is_stopped():
 			acceleration = acceleration_floor
-		gravity_vector = Vector3.ZERO  # before was called gravity...
+		gravity_vector = Vector3.ZERO  
+
+	var velocity_=velocity
+	
+	print(state)
+	var state_machine = characterAnimationTree["parameters/playback"]
+	match state:
+		states.IDLE:
+			if Input.is_action_just_pressed("mind_trick"):
+				state = states.MIND
+				emit_signal("in_mind")
+
+			elif Input.is_action_just_pressed("glide") and glide_reset.is_stopped():
+				print("Glide")
+				glide_timer.start()
+				state = states.GLIDE
+				animation_state.travel("Hover_loop")
+				_on_glide()
+	
+			elif Input.is_action_just_pressed("jump") and is_on_floor() and glide_timer.is_stopped():
+				snap = Vector3.ZERO
+				gravity_vector = Vector3.UP * jump
+				state=states.JUMP
+				animation_state.travel("Jump")							
+			elif velocity_.length() >0:
+				state=states.WALK		
+			pass
+			
+		states.GLIDE:
+			if Input.is_action_pressed("glide") and not glide_timer.is_stopped():
+				_on_glide()
+			elif Input.is_action_just_released("glide"):
+				if not glide_timer.is_stopped():
+					glide_timer.stop()
+					glide_reset.start()
+					_out_of_glide()
+				state=states.WALK
+
+			pass
+		states.RUN:						
+			if Input.is_action_just_pressed("jump") and is_on_floor() and glide_timer.is_stopped():
+				snap = Vector3.ZERO
+				gravity_vector = Vector3.UP * jump
+				state=states.JUMP
+				animation_state.travel("Jump")
+			elif Input.is_action_just_pressed("glide") and glide_reset.is_stopped():
+				print("Glide")
+				glide_timer.start()
+				state = states.GLIDE
+				animation_state.travel("Hover_loop")
+				_on_glide()						
+			else:
+				# var state_machine = characterAnimationTree["parameters/playback"]
+				#print(velocity_.length())
+				if glide_timer.is_stopped() and is_on_floor():
+					if velocity_.length()>0:
+						state_machine.travel("Moving_loop")
+						characterAnimationTree.set("parameters/Moving_loop/blend_position",velocity_.length())	
+						#print(state_machine.get_travel_path("Jump"))
+						#characterAnimationTree["parameters/blend_position"].x=velocity_.length()
+					else:
+						# state_machine.travel("Idle-loop")
+						#print("Loop")
+						state=states.IDLE
+						state_machine.travel("Idle_loop")
+					pass
+		states.MIND:
+			body.rotation.y = camera_rotation
+			direction = Vector3.ZERO
+								
+			if Input.is_action_pressed("mind_connection"): # and state == states.MIND:
+				var space_state = get_world().direct_space_state
+				var rayOrigin = camera.camera.project_ray_origin(center)
+				var rayEnd = rayOrigin + camera.camera.project_ray_normal(center) * 2000
+				var intersection = space_state.intersect_ray(rayOrigin, rayEnd)
+							
+				if intersection.empty():
+					if last_intersection != null:
+							last_intersection.collider.move(Vector3.ZERO)
+							last_intersection = null
+				elif intersection.collider.is_in_group("Beetle"):
+					last_intersection = intersection
+					emit_signal("move_beetle",intersection.position)
+				else:
+					if last_intersection != null:
+						emit_signal("move_beetle",Vector3.ZERO)
+						last_intersection = null
+			if Input.is_action_just_released("mind_connection"):
+				if last_intersection != null:
+					emit_signal("move_beetle",Vector3.ZERO)
+					last_intersection = null
+			
+			if Input.is_action_just_pressed("mind_trick"):	
+				state = states.IDLE
+				if last_intersection != null:
+					last_intersection.collider.move(Vector3.ZERO)
+					last_intersection = null
+				emit_signal("out_mind")
+			
+		states.JUMP:
+			if is_on_floor():
+				
+				state=states.WALK
+				# state_machine.travel("Mooving_loop")
+			pass
+		states.WALK:
+			if Input.is_action_just_pressed("jump") and is_on_floor() and glide_timer.is_stopped():
+				snap = Vector3.ZERO
+				gravity_vector = Vector3.UP * jump
+				state=states.JUMP
+				animation_state.travel("Jump")	
+			elif Input.is_action_just_pressed("glide") and glide_reset.is_stopped():
+				print("Glide")
+				glide_timer.start()
+				state = states.GLIDE
+				animation_state.travel("Hover_loop")
+				_on_glide()						
+			else:
+				#print(velocity_.length())
+				if glide_timer.is_stopped() and is_on_floor():
+					if velocity_.length()>0:
+						state_machine.travel("Moving_loop")
+						characterAnimationTree.set("parameters/Moving_loop/blend_position",velocity_.length())	
+						#print(state_machine.get_travel_path("Jump"))
+						#characterAnimationTree["parameters/blend_position"].x=velocity_.length()
+					else:
+						# state_machine.travel("Idle-loop")
+						#print("Loop")
+						state=states.IDLE
+						state_machine.travel("Idle_loop")
+					pass
+		
+		#jumping and gravity
+	if is_on_floor():
+		pass
 	else:
 		"""var gliding_factor_=1
 		if Input.is_action_pressed("jump"):
@@ -118,59 +235,6 @@ func _physics_process(delta: float) -> void:
 			acceleration = acceleration_air
 		gravity_vector += Vector3.DOWN * gravity * delta
 	
-	if Input.is_action_pressed("mind_connection") and state == states.MIND:
-		var space_state = get_world().direct_space_state
-		var rayOrigin = camera.camera.project_ray_origin(center)
-		var rayEnd = rayOrigin + camera.camera.project_ray_normal(center) * 2000
-		var intersection = space_state.intersect_ray(rayOrigin, rayEnd)
-					
-		if intersection.empty():
-			if last_intersection != null:
-					last_intersection.collider.move(Vector3.ZERO)
-					last_intersection = null
-		elif intersection.collider.is_in_group("Beetle"):
-			last_intersection = intersection
-			emit_signal("move_beetle",intersection.position)
-		else:
-			if last_intersection != null:
-				emit_signal("move_beetle",Vector3.ZERO)
-				last_intersection = null
-	if Input.is_action_just_released("mind_connection"):
-		if last_intersection != null:
-			emit_signal("move_beetle",Vector3.ZERO)
-			last_intersection = null
-	
-	if Input.is_action_just_pressed("mind_trick"):
-		if state != states.MIND:
-			state = states.MIND
-			emit_signal("in_mind")
-		else:
-			state = states.IDLE
-			if last_intersection != null:
-				last_intersection.collider.move(Vector3.ZERO)
-				last_intersection = null
-			emit_signal("out_mind")
-
-	if Input.is_action_pressed("glide") and not glide_timer.is_stopped():
-		_on_glide()
-		state = states.GLIDE
-	
-	if Input.is_action_just_released("glide"):
-		if not glide_timer.is_stopped():
-			glide_timer.stop()
-			glide_reset.start()
-			_out_of_glide()
-			
-	
-	if Input.is_action_just_pressed("glide") and glide_reset.is_stopped():
-		print("Glide")
-		glide_timer.start()
-		_on_glide()
-	
-	if Input.is_action_just_pressed("jump") and is_on_floor() and glide_timer.is_stopped():
-		snap = Vector3.ZERO
-		gravity_vector = Vector3.UP * jump
-		animation_state.travel("Jump")
 	
 	#make it move
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
@@ -180,27 +244,27 @@ func _physics_process(delta: float) -> void:
 	movement = velocity + gravity_vector
 	
 	move_and_slide_with_snap(movement, snap, Vector3.UP)
-
-	var velocity_=velocity
 	
-	if character_version=="v0":
-		# the speed triggers the blended animation
-		characterAnimationTree["parameters/blend_position"].x=velocity_.length()
-		characterAnimationTree["parameters/blend_position"].y=gravity_vector.length()
-		#print(velocity.length()/speed,velocity_.length())
-	elif character_version=="v1":
-		var state_machine = characterAnimationTree["parameters/playback"]
-		#print(velocity_.length())
-		if not hovering_ and is_on_floor():
-			if velocity_.length()>0:
-				state_machine.travel("Moving_loop")
-				characterAnimationTree.set("parameters/Moving_loop/blend_position",velocity_.length())	
-				#print(state_machine.get_travel_path("Jump"))
-				#characterAnimationTree["parameters/blend_position"].x=velocity_.length()
-			else:
-				# state_machine.travel("Idle-loop")
-				#print("Loop")
-				state_machine.travel("Idle_loop")
+
+	
+#	if character_version=="v0":
+#		# the speed triggers the blended animation
+#		characterAnimationTree["parameters/blend_position"].x=velocity_.length()
+#		characterAnimationTree["parameters/blend_position"].y=gravity_vector.length()
+#		#print(velocity.length()/speed,velocity_.length())
+#	elif character_version=="v1":
+#		var state_machine = characterAnimationTree["parameters/playback"]
+#		#print(velocity_.length())
+#		if not hovering_ and is_on_floor():
+#			if velocity_.length()>0:
+#				state_machine.travel("Moving_loop")
+#				characterAnimationTree.set("parameters/Moving_loop/blend_position",velocity_.length())	
+#				#print(state_machine.get_travel_path("Jump"))
+#				#characterAnimationTree["parameters/blend_position"].x=velocity_.length()
+#			else:
+#				# state_machine.travel("Idle-loop")
+#				#print("Loop")
+#				state_machine.travel("Idle_loop")
 		
 #func stop():
 #	$PhilosopherBug/RootNode/AnimationPlayer.play("idle")
