@@ -7,7 +7,7 @@ extends KinematicBody
 
 var animation_state
 var characterAnimationTree
-
+var direction := Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	characterAnimationTree=$AnimationTree
@@ -54,3 +54,12 @@ func _physics_process(delta):
 				animation_state.travel("Idle180")
 			pass
 	
+
+
+func _on_Player_move_beetle(position) -> void:
+	if position == Vector3.ZERO:
+		direction = Vector2.ZERO
+	else:
+		var direction3D = (position - global_transform.origin)
+		direction = Vector2(direction3D.x, direction3D.z)
+

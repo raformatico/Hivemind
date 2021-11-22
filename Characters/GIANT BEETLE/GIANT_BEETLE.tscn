@@ -1107,7 +1107,7 @@ start_node = "Start"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=29]
 
-[node name="GIANT_BEETLE" type="KinematicBody"]
+[node name="GIANT_BEETLE" type="KinematicBody" groups=["Beetle"]]
 script = ExtResource( 1 )
 velocity = 1
 
