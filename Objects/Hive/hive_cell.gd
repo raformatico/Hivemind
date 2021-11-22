@@ -17,11 +17,16 @@ func _ready():
 
 
 func _on_Cell_mouse_entered():
-	if $AnimationPlayer.current_animation!="coming":
-		$AnimationPlayer.play("coming")
+	#if $AnimationPlayer.current_animation!="coming":
+	#	$AnimationPlayer.play("coming")
+	if get_node("Chordworm")!=null:
+		$Chordworm/AnimationPlayer.playback_speed=5
+	
 
 
 func _on_Cell_mouse_exited():
-	$AnimationPlayer.queue("going")
-	$AnimationPlayer.queue("idle")
+	#$AnimationPlayer.queue("going")
+	#$AnimationPlayer.queue("idle")
+	if get_node("Chordworm")!=null:
+		$Chordworm/AnimationPlayer.playback_speed=0.5
 	

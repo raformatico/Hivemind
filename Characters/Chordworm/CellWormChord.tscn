@@ -1,0 +1,183 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Objects/Hive/hive_cell.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Chordworm/Chordworm.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Hive/cell.obj" type="ArrayMesh" id=3]
+
+[sub_resource type="CapsuleShape" id=1]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Chordworm:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, -1.23211 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Chordworm:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "coming"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Chordworm:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, -1.23211 ), Vector3( 0, 0, 0.241956 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Chordworm:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "going"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Chordworm:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Chordworm:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0.451267 ), Vector3( 0, 0, -1.4211 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "hidden"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Chordworm:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, -1.4211 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Chordworm:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Chordworm:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, -1.4211 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Chordworm:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+
+[sub_resource type="AnimationNodeBlendTree" id=8]
+nodes/Animation/node = SubResource( 7 )
+nodes/Animation/position = Vector2( 327, 163 )
+nodes/output/position = Vector2( 560, 140 )
+
+[node name="Cell" type="StaticBody"]
+script = ExtResource( 1 )
+
+[node name="Chordworm" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.241956 )
+
+[node name="mesh" type="MeshInstance" parent="."]
+transform = Transform( 0.4, 0, 0, 0, -4.37114e-08, -0.4, 0, 1, -1.74846e-08, 0, 0, 0 )
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="collisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.231605, 0.529997, 0.308492 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "coming"
+reset_on_save = false
+anims/RESET = SubResource( 2 )
+anims/coming = SubResource( 3 )
+anims/going = SubResource( 4 )
+anims/hidden = SubResource( 5 )
+anims/idle = SubResource( 6 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+
+[connection signal="mouse_entered" from="." to="." method="_on_Cell_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Cell_mouse_exited"]

@@ -1,0 +1,796 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Characters/Chordworm/CellWormChord.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Environment" id=1]
+background_energy = 2.01
+ambient_light_color = Color( 0.235294, 0.505882, 0.0470588, 1 )
+adjustment_saturation = 3.61
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.494118, 0.494118, 0.494118, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Cell" parent="." instance=ExtResource( 1 )]
+
+[node name="Cell2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.678488, 0, 0 )
+
+[node name="Cell3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.339244, 0.587471, 0 )
+
+[node name="Cell4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01773, 0.587471, 0 )
+
+[node name="Cell5" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37352, 0, 0 )
+
+[node name="Cell6" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.695036, 0, 0 )
+
+[node name="Cell7" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03428, 0.587471, 0 )
+
+[node name="Cell8" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.355792, 0.587471, 0 )
+
+[node name="Cell9" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.15012, 0 )
+
+[node name="Cell10" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.678488, -1.15012, 0 )
+
+[node name="Cell11" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.339244, -0.562648, 0 )
+
+[node name="Cell12" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01773, -0.562648, 0 )
+
+[node name="Cell13" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37352, -1.15012, 0 )
+
+[node name="Cell14" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.695036, -1.15012, 0 )
+
+[node name="Cell15" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03428, -0.562648, 0 )
+
+[node name="Cell16" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.355792, -0.562648, 0 )
+
+[node name="Cell17" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74705, 0, 0 )
+
+[node name="Cell18" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42554, 0, 0 )
+
+[node name="Cell19" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08629, 0.587471, 0 )
+
+[node name="Cell20" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76478, 0.587471, 0 )
+
+[node name="Cell21" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37352, 0, 0 )
+
+[node name="Cell22" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05201, 0, 0 )
+
+[node name="Cell23" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71277, 0.587471, 0 )
+
+[node name="Cell24" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39126, 0.587471, 0 )
+
+[node name="Cell25" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74705, -1.15012, 0 )
+
+[node name="Cell26" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42554, -1.15012, 0 )
+
+[node name="Cell27" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08629, -0.562648, 0 )
+
+[node name="Cell28" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76478, -0.562648, 0 )
+
+[node name="Cell29" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37352, -1.15012, 0 )
+
+[node name="Cell30" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05201, -1.15012, 0 )
+
+[node name="Cell31" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71277, -0.562648, 0 )
+
+[node name="Cell32" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39126, -0.562648, 0 )
+
+[node name="Cell33" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48279, 0, 0 )
+
+[node name="Cell34" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8043, 0, 0 )
+
+[node name="Cell35" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14354, 0.587471, 0 )
+
+[node name="Cell36" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46505, 0.587471, 0 )
+
+[node name="Cell37" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85631, 0, 0 )
+
+[node name="Cell38" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17782, 0, 0 )
+
+[node name="Cell39" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.51707, 0.587471, 0 )
+
+[node name="Cell40" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83858, 0.587471, 0 )
+
+[node name="Cell41" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48279, -1.15012, 0 )
+
+[node name="Cell42" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8043, -1.15012, 0 )
+
+[node name="Cell43" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14354, -0.562648, 0 )
+
+[node name="Cell44" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46505, -0.562648, 0 )
+
+[node name="Cell45" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85631, -1.15012, 0 )
+
+[node name="Cell46" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17782, -1.15012, 0 )
+
+[node name="Cell47" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.51707, -0.562648, 0 )
+
+[node name="Cell48" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83858, -0.562648, 0 )
+
+[node name="Cell49" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.73574, 0, 0 )
+
+[node name="Cell50" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05725, 0, 0 )
+
+[node name="Cell51" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39649, 0.587471, 0 )
+
+[node name="Cell52" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71801, 0.587471, 0 )
+
+[node name="Cell53" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10926, 0, 0 )
+
+[node name="Cell54" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.43077, 0, 0 )
+
+[node name="Cell55" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77002, 0.587471, 0 )
+
+[node name="Cell56" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09153, 0.587471, 0 )
+
+[node name="Cell57" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.73574, -1.15012, 0 )
+
+[node name="Cell58" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05725, -1.15012, 0 )
+
+[node name="Cell59" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39649, -0.562648, 0 )
+
+[node name="Cell60" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71801, -0.562648, 0 )
+
+[node name="Cell61" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10926, -1.15012, 0 )
+
+[node name="Cell62" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.43077, -1.15012, 0 )
+
+[node name="Cell63" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77002, -0.562648, 0 )
+
+[node name="Cell64" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09153, -0.562648, 0 )
+
+[node name="Cell65" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.31257, 0 )
+
+[node name="Cell66" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.678488, 2.31257, 0 )
+
+[node name="Cell67" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.339244, 2.90004, 0 )
+
+[node name="Cell68" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01773, 2.90004, 0 )
+
+[node name="Cell69" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37352, 2.31257, 0 )
+
+[node name="Cell70" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.695036, 2.31257, 0 )
+
+[node name="Cell71" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03428, 2.90004, 0 )
+
+[node name="Cell72" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.355792, 2.90004, 0 )
+
+[node name="Cell73" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16245, 0 )
+
+[node name="Cell74" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.678488, 1.16245, 0 )
+
+[node name="Cell75" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.339244, 1.74992, 0 )
+
+[node name="Cell76" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01773, 1.74992, 0 )
+
+[node name="Cell77" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37352, 1.16245, 0 )
+
+[node name="Cell78" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.695036, 1.16245, 0 )
+
+[node name="Cell79" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03428, 1.74992, 0 )
+
+[node name="Cell80" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.355792, 1.74992, 0 )
+
+[node name="Cell81" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74705, 2.31257, 0 )
+
+[node name="Cell82" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42554, 2.31257, 0 )
+
+[node name="Cell83" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08629, 2.90004, 0 )
+
+[node name="Cell84" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76478, 2.90004, 0 )
+
+[node name="Cell85" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37352, 2.31257, 0 )
+
+[node name="Cell86" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05201, 2.31257, 0 )
+
+[node name="Cell87" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71277, 2.90004, 0 )
+
+[node name="Cell88" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39126, 2.90004, 0 )
+
+[node name="Cell89" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74705, 1.16245, 0 )
+
+[node name="Cell90" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42554, 1.16245, 0 )
+
+[node name="Cell91" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08629, 1.74992, 0 )
+
+[node name="Cell92" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76478, 1.74992, 0 )
+
+[node name="Cell93" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37352, 1.16245, 0 )
+
+[node name="Cell94" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05201, 1.16245, 0 )
+
+[node name="Cell95" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71277, 1.74992, 0 )
+
+[node name="Cell96" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39126, 1.74992, 0 )
+
+[node name="Cell97" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48279, 2.31257, 0 )
+
+[node name="Cell98" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8043, 2.31257, 0 )
+
+[node name="Cell99" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14354, 2.90004, 0 )
+
+[node name="Cell100" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46505, 2.90004, 0 )
+
+[node name="Cell101" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85631, 2.31257, 0 )
+
+[node name="Cell102" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17782, 2.31257, 0 )
+
+[node name="Cell103" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.51707, 2.90004, 0 )
+
+[node name="Cell104" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83858, 2.90004, 0 )
+
+[node name="Cell105" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48279, 1.16245, 0 )
+
+[node name="Cell106" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8043, 1.16245, 0 )
+
+[node name="Cell107" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14354, 1.74992, 0 )
+
+[node name="Cell108" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46505, 1.74992, 0 )
+
+[node name="Cell109" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85631, 1.16245, 0 )
+
+[node name="Cell110" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17782, 1.16245, 0 )
+
+[node name="Cell111" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.51707, 1.74992, 0 )
+
+[node name="Cell112" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83858, 1.74992, 0 )
+
+[node name="Cell113" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.73574, 2.31257, 0 )
+
+[node name="Cell114" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05725, 2.31257, 0 )
+
+[node name="Cell115" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39649, 2.90004, 0 )
+
+[node name="Cell116" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71801, 2.90004, 0 )
+
+[node name="Cell117" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10926, 2.31257, 0 )
+
+[node name="Cell118" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.43077, 2.31257, 0 )
+
+[node name="Cell119" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77002, 2.90004, 0 )
+
+[node name="Cell120" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09153, 2.90004, 0 )
+
+[node name="Cell121" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.73574, 1.16245, 0 )
+
+[node name="Cell122" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05725, 1.16245, 0 )
+
+[node name="Cell123" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39649, 1.74992, 0 )
+
+[node name="Cell124" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71801, 1.74992, 0 )
+
+[node name="Cell125" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10926, 1.16245, 0 )
+
+[node name="Cell126" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.43077, 1.16245, 0 )
+
+[node name="Cell127" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77002, 1.74992, 0 )
+
+[node name="Cell128" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09153, 1.74992, 0 )
+
+[node name="Cell129" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.58748, 0 )
+
+[node name="Cell130" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.678488, -4.58748, 0 )
+
+[node name="Cell131" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.339244, -4.00001, 0 )
+
+[node name="Cell132" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01773, -4.00001, 0 )
+
+[node name="Cell133" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37352, -4.58748, 0 )
+
+[node name="Cell134" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.695036, -4.58748, 0 )
+
+[node name="Cell135" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03428, -4.00001, 0 )
+
+[node name="Cell136" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.355792, -4.00001, 0 )
+
+[node name="Cell137" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.7376, 0 )
+
+[node name="Cell138" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.678488, -5.7376, 0 )
+
+[node name="Cell139" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.339244, -5.15013, 0 )
+
+[node name="Cell140" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01773, -5.15013, 0 )
+
+[node name="Cell141" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37352, -5.7376, 0 )
+
+[node name="Cell142" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.695036, -5.7376, 0 )
+
+[node name="Cell143" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03428, -5.15013, 0 )
+
+[node name="Cell144" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.355792, -5.15013, 0 )
+
+[node name="Cell145" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74705, -4.58748, 0 )
+
+[node name="Cell146" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42554, -4.58748, 0 )
+
+[node name="Cell147" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08629, -4.00001, 0 )
+
+[node name="Cell148" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76478, -4.00001, 0 )
+
+[node name="Cell149" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37352, -4.58748, 0 )
+
+[node name="Cell150" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05201, -4.58748, 0 )
+
+[node name="Cell151" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71277, -4.00001, 0 )
+
+[node name="Cell152" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39126, -4.00001, 0 )
+
+[node name="Cell153" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74705, -5.7376, 0 )
+
+[node name="Cell154" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42554, -5.7376, 0 )
+
+[node name="Cell155" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08629, -5.15013, 0 )
+
+[node name="Cell156" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76478, -5.15013, 0 )
+
+[node name="Cell157" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37352, -5.7376, 0 )
+
+[node name="Cell158" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05201, -5.7376, 0 )
+
+[node name="Cell159" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71277, -5.15013, 0 )
+
+[node name="Cell160" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39126, -5.15013, 0 )
+
+[node name="Cell161" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48279, -4.58748, 0 )
+
+[node name="Cell162" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8043, -4.58748, 0 )
+
+[node name="Cell163" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14354, -4.00001, 0 )
+
+[node name="Cell164" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46505, -4.00001, 0 )
+
+[node name="Cell165" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85631, -4.58748, 0 )
+
+[node name="Cell166" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17782, -4.58748, 0 )
+
+[node name="Cell167" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.51707, -4.00001, 0 )
+
+[node name="Cell168" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83858, -4.00001, 0 )
+
+[node name="Cell169" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48279, -5.7376, 0 )
+
+[node name="Cell170" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8043, -5.7376, 0 )
+
+[node name="Cell171" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14354, -5.15013, 0 )
+
+[node name="Cell172" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46505, -5.15013, 0 )
+
+[node name="Cell173" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85631, -5.7376, 0 )
+
+[node name="Cell174" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17782, -5.7376, 0 )
+
+[node name="Cell175" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.51707, -5.15013, 0 )
+
+[node name="Cell176" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83858, -5.15013, 0 )
+
+[node name="Cell177" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.73574, -4.58748, 0 )
+
+[node name="Cell178" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05725, -4.58748, 0 )
+
+[node name="Cell179" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39649, -4.00001, 0 )
+
+[node name="Cell180" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71801, -4.00001, 0 )
+
+[node name="Cell181" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10926, -4.58748, 0 )
+
+[node name="Cell182" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.43077, -4.58748, 0 )
+
+[node name="Cell183" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77002, -4.00001, 0 )
+
+[node name="Cell184" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09153, -4.00001, 0 )
+
+[node name="Cell185" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.73574, -5.7376, 0 )
+
+[node name="Cell186" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05725, -5.7376, 0 )
+
+[node name="Cell187" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39649, -5.15013, 0 )
+
+[node name="Cell188" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71801, -5.15013, 0 )
+
+[node name="Cell189" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10926, -5.7376, 0 )
+
+[node name="Cell190" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.43077, -5.7376, 0 )
+
+[node name="Cell191" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77002, -5.15013, 0 )
+
+[node name="Cell192" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09153, -5.15013, 0 )
+
+[node name="Cell193" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.27491, 0 )
+
+[node name="Cell194" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.678488, -2.27491, 0 )
+
+[node name="Cell195" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.339244, -1.68743, 0 )
+
+[node name="Cell196" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01773, -1.68743, 0 )
+
+[node name="Cell197" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37352, -2.27491, 0 )
+
+[node name="Cell198" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.695036, -2.27491, 0 )
+
+[node name="Cell199" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03428, -1.68743, 0 )
+
+[node name="Cell200" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.355792, -1.68743, 0 )
+
+[node name="Cell201" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.42502, 0 )
+
+[node name="Cell202" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.678488, -3.42502, 0 )
+
+[node name="Cell203" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.339244, -2.83755, 0 )
+
+[node name="Cell204" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01773, -2.83755, 0 )
+
+[node name="Cell205" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37352, -3.42502, 0 )
+
+[node name="Cell206" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.695036, -3.42502, 0 )
+
+[node name="Cell207" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03428, -2.83755, 0 )
+
+[node name="Cell208" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.355792, -2.83755, 0 )
+
+[node name="Cell209" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74705, -2.27491, 0 )
+
+[node name="Cell210" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42554, -2.27491, 0 )
+
+[node name="Cell211" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08629, -1.68743, 0 )
+
+[node name="Cell212" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76478, -1.68743, 0 )
+
+[node name="Cell213" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37352, -2.27491, 0 )
+
+[node name="Cell214" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05201, -2.27491, 0 )
+
+[node name="Cell215" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71277, -1.68743, 0 )
+
+[node name="Cell216" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39126, -1.68743, 0 )
+
+[node name="Cell217" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74705, -3.42502, 0 )
+
+[node name="Cell218" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42554, -3.42502, 0 )
+
+[node name="Cell219" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08629, -2.83755, 0 )
+
+[node name="Cell220" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76478, -2.83755, 0 )
+
+[node name="Cell221" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37352, -3.42502, 0 )
+
+[node name="Cell222" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05201, -3.42502, 0 )
+
+[node name="Cell223" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71277, -2.83755, 0 )
+
+[node name="Cell224" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39126, -2.83755, 0 )
+
+[node name="Cell225" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48279, -2.27491, 0 )
+
+[node name="Cell226" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8043, -2.27491, 0 )
+
+[node name="Cell227" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14354, -1.68743, 0 )
+
+[node name="Cell228" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46505, -1.68743, 0 )
+
+[node name="Cell229" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85631, -2.27491, 0 )
+
+[node name="Cell230" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17782, -2.27491, 0 )
+
+[node name="Cell231" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.51707, -1.68743, 0 )
+
+[node name="Cell232" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83858, -1.68743, 0 )
+
+[node name="Cell233" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48279, -3.42502, 0 )
+
+[node name="Cell234" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8043, -3.42502, 0 )
+
+[node name="Cell235" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14354, -2.83755, 0 )
+
+[node name="Cell236" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46505, -2.83755, 0 )
+
+[node name="Cell237" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85631, -3.42502, 0 )
+
+[node name="Cell238" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17782, -3.42502, 0 )
+
+[node name="Cell239" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.51707, -2.83755, 0 )
+
+[node name="Cell240" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83858, -2.83755, 0 )
+
+[node name="Cell241" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.73574, -2.27491, 0 )
+
+[node name="Cell242" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05725, -2.27491, 0 )
+
+[node name="Cell243" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39649, -1.68743, 0 )
+
+[node name="Cell244" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71801, -1.68743, 0 )
+
+[node name="Cell245" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10926, -2.27491, 0 )
+
+[node name="Cell246" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.43077, -2.27491, 0 )
+
+[node name="Cell247" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77002, -1.68743, 0 )
+
+[node name="Cell248" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09153, -1.68743, 0 )
+
+[node name="Cell249" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.73574, -3.42502, 0 )
+
+[node name="Cell250" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05725, -3.42502, 0 )
+
+[node name="Cell251" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39649, -2.83755, 0 )
+
+[node name="Cell252" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71801, -2.83755, 0 )
+
+[node name="Cell253" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10926, -3.42502, 0 )
+
+[node name="Cell254" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.43077, -3.42502, 0 )
+
+[node name="Cell255" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77002, -2.83755, 0 )
+
+[node name="Cell256" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09153, -2.83755, 0 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.952741, 0.0544633, 0.298862, 0, 0.983798, -0.179283, -0.303784, 0.17081, 0.937304, 4.47822, -2.83699, 6.0513 )
+environment = SubResource( 1 )
+current = true
+far = 48.0
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Camera"]
+shadow_enabled = true
+shadow_color = Color( 0.25098, 0, 0, 1 )
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.32213 )
+width = 26.7908
+height = 18.2306
+material = SubResource( 2 )
