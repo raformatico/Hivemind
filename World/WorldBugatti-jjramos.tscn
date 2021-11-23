@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Objects/Hive/Hive_.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/bugatti/PlayerBugatti.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Objects/zamburguesa/floating-island.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Material_002.material" type="Material" id=5]
 [ext_resource path="res://World/environment.res" type="Environment" id=6]
+[ext_resource path="res://Characters/GIANT BEETLE/GIANT_BEETLE.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Characters/GIANT BEETLE/BeetlePath.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConcavePolygonShape" id=1]
 data = PoolVector3Array( 122.357, 0, -251.744, 177.017, 0, -278.96, 142.074, 0, -254.966, 177.017, 0, -278.96, 323.672, 0, -477.439, 216.158, 0, -261.316, 323.672, 0, -477.439, -246.395, 0, 95.5329, -246.395, 0, -477.439, -246.395, 0, 95.5329, 164.536, 0, -71.5445, 323.672, 0, 95.5329, -246.395, 0, 95.5329, 137.588, 0, -71.9777, 164.536, 0, -71.5445, 122.357, 0, -251.744, 323.672, 0, -477.439, 177.017, 0, -278.96, 102.64, 0, -230.983, 323.672, 0, -477.439, 122.357, 0, -251.744, -246.395, 0, 95.5329, 106.425, 0, -108.189, 137.588, 0, -71.9777, 106.425, 0, -108.189, 92.996, 0, -186.509, 107.908, 0, -153.814, -246.395, 0, 95.5329, 92.996, 0, -186.509, 106.425, 0, -108.189, 102.64, 0, -230.983, -246.395, 0, 95.5329, 323.672, 0, -477.439, -246.395, 0, 95.5329, 97.8179, 0, -210.389, 92.996, 0, -186.509, -246.395, 0, 95.5329, 102.64, 0, -230.983, 97.8179, 0, -210.389, 207.868, 0, -110.329, 323.672, 0, 95.5329, 164.536, 0, -71.5445, 323.672, 0, 95.5329, 216.158, 0, -261.316, 323.672, 0, -477.439, 223.48, 0, -234.027, 225.759, 0, -166.792, 217.572, 0, -186.509, 323.672, 0, 95.5329, 223.48, 0, -234.027, 216.158, 0, -261.316, 224.101, 0, -147.075, 323.672, 0, 95.5329, 207.868, 0, -110.329, 323.672, 0, 95.5329, 225.759, 0, -166.792, 223.48, 0, -234.027, 225.759, 0, -166.792, 323.672, 0, 95.5329, 224.101, 0, -147.075 )
@@ -42,16 +44,27 @@ data = PoolVector3Array( -0.0816, -0.1163, -1.7207, 0.0692, 0.1541, -2.2339, -0.
 
 [sub_resource type="BakedLightmapData" id=8]
 
+[sub_resource type="CylinderShape" id=9]
+radius = 3.51548
+height = 4.32595
+
 [node name="World" instance=ExtResource( 3 )]
 
-[node name="Player" parent="." index="0" instance=ExtResource( 2 )]
+[node name="BeetlePath" parent="." index="0" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.4017, -4.5, -13.1213 )
+visible = false
+
+[node name="GIANT_BEETLE" parent="." index="1" instance=ExtResource( 7 )]
+transform = Transform( -0.00602138, 0, 0.999982, 0, 1, 0, -0.999982, 0, -0.00602138, -2.75928, -4.43219, -16.2088 )
+
+[node name="Player" parent="." index="2" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.15925, 0 )
 
 [node name="Camera" parent="Player/Camera/CameraIn" index="0"]
 environment = ExtResource( 6 )
 far = 670.4
 
-[node name="Camera" parent="." index="2"]
+[node name="Camera" parent="." index="4"]
 visible = false
 
 [node name="Camera_Orientation" parent="Camera" index="0"]
@@ -72,7 +85,7 @@ shape = SubResource( 2 )
 [node name="CollisionShape" type="CollisionShape" parent="Cube008/StaticBody" index="0"]
 shape = SubResource( 3 )
 
-[node name="Hive" parent="." index="14" instance=ExtResource( 1 )]
+[node name="Hive" parent="." index="16" instance=ExtResource( 1 )]
 transform = Transform( -0.540519, -0.44479, -0.000566014, -0.00994804, 0.0129796, -0.699809, 0.444679, -0.540364, -0.0163436, 46.5595, 8.33429, 19.534 )
 
 [node name="SpotLight" type="SpotLight" parent="Hive" index="43"]
@@ -86,7 +99,7 @@ shadow_reverse_cull_face = true
 spot_range = 42.8378
 spot_attenuation = 2.46229
 
-[node name="Cylinder002" parent="." index="15"]
+[node name="Cylinder002" parent="." index="17"]
 visible = false
 
 [node name="StaticBody" type="StaticBody" parent="Cube034" index="0"]
@@ -94,24 +107,24 @@ visible = false
 [node name="CollisionShape" type="CollisionShape" parent="Cube034/StaticBody" index="0"]
 shape = SubResource( 4 )
 
-[node name="zamburguesa3" parent="." index="34" instance=ExtResource( 4 )]
+[node name="zamburguesa3" parent="." index="36" instance=ExtResource( 4 )]
 transform = Transform( 0.943868, -2.19762e-10, 0.330323, -0.00301517, 0.999958, 0.00861557, -0.330309, -0.00912795, 0.943829, 125.267, -4.46905, -72.964 )
 
-[node name="Cube035" parent="." index="35"]
+[node name="Cube035" parent="." index="37"]
 transform = Transform( 0.943868, 0, 0.330323, -0.00301517, 0.999958, 0.00861557, -0.330309, -0.00912795, 0.943829, 125.267, -4.46905, -72.964 )
 visible = false
 mesh = SubResource( 5 )
 
-[node name="zamburguesa4" parent="." index="36" instance=ExtResource( 4 )]
+[node name="zamburguesa4" parent="." index="38" instance=ExtResource( 4 )]
 transform = Transform( 0.943868, -2.19762e-10, 0.330323, -2.32831e-10, 1, 0, -0.330323, 7.69095e-11, 0.943868, 113.142, -4.46055, -62.7617 )
 
-[node name="Cube036" parent="." index="37"]
+[node name="Cube036" parent="." index="39"]
 visible = false
 
-[node name="zamburguesa2" parent="." index="38" instance=ExtResource( 4 )]
+[node name="zamburguesa2" parent="." index="40" instance=ExtResource( 4 )]
 transform = Transform( 0.943868, -2.19762e-10, 0.330323, -2.32831e-10, 1, 0, -0.330323, 7.69095e-11, 0.943868, 137.349, -4.46905, -56.59 )
 
-[node name="Cube037" parent="." index="39"]
+[node name="Cube037" parent="." index="41"]
 visible = false
 
 [node name="StaticBody" type="StaticBody" parent="Cube038" index="0"]
@@ -124,13 +137,13 @@ shape = SubResource( 6 )
 [node name="CollisionShape" type="CollisionShape" parent="Cube040/StaticBody" index="0"]
 shape = SubResource( 7 )
 
-[node name="StaticBody" parent="." index="43" instance=ExtResource( 4 )]
+[node name="StaticBody" parent="." index="45" instance=ExtResource( 4 )]
 transform = Transform( 0.943868, -2.19762e-10, 0.330323, -2.32831e-10, 1, 0, -0.330323, 7.69095e-11, 0.943868, 102.437, -4.46905, -81.8492 )
 
-[node name="Cube042" parent="." index="44"]
+[node name="Cube042" parent="." index="46"]
 visible = false
 
-[node name="BakedLightmap" type="BakedLightmap" parent="." index="57"]
+[node name="BakedLightmap" type="BakedLightmap" parent="." index="59"]
 environment_mode = 1
 environment_min_light = Color( 0.219608, 0.141176, 0.141176, 1 )
 light_data = SubResource( 8 )
@@ -147,5 +160,19 @@ shadow_color = Color( 0.729412, 0.458824, 0.458824, 1 )
 shadow_bias = -0.083
 shadow_reverse_cull_face = true
 
+[node name="RigidBody" type="RigidBody" parent="." index="60"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.72409, -0.954989, -16.4083 )
+mass = 102.041
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 4.76837e-07, 0 )
+shape = SubResource( 9 )
+
+[node name="CSGSphere" type="CSGSphere" parent="RigidBody" index="1"]
+radius = 3.62917
+
+[connection signal="move_beetle" from="Player" to="BeetlePath/PathFollow/GIANT_BEETLE" method="_on_Player_move_beetle"]
+
+[editable path="BeetlePath"]
 [editable path="Player"]
 [editable path="Player/Camera"]

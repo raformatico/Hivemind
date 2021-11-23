@@ -1,0 +1,116 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://World/Path.gd" type="Script" id=1]
+[ext_resource path="res://World/BeetleTest.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/Cursor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/Obstacle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player/bugatti/PlayerBugatti.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Curve3D" id=4]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 1.07033, 0, 0.74153, 0, 0, 0, 0, 0, 0, -6.70343, 0, 2.19225, 0, 0, 0, 0, 0, 0, -12.1416, 0, 2.91966 ),
+"tilts": PoolRealArray( 0, 0, 0 )
+}
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.117647, 0.113725, 0.168627, 1 )
+metallic = 0.25
+metallic_specular = 0.41
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 100, 0.2, 100 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 50, 0.1, 50 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Path" type="Path" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.50749, 0, -4.60689 )
+curve = SubResource( 4 )
+script = ExtResource( 1 )
+
+[node name="PathFollow" type="PathFollow" parent="Path"]
+transform = Transform( 0.900224, 0, -0.435428, 0, 1, 0, 0.435428, 0, 0.900224, -1.87746, 0, 1.29164 )
+offset = 3.0
+loop = false
+
+[node name="Beetle" parent="Path/PathFollow" instance=ExtResource( 2 )]
+
+[node name="Cursor" parent="." instance=ExtResource( 4 )]
+
+[node name="PauseMenu" parent="." instance=ExtResource( 3 )]
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.44815, 0, 0 )
+
+[node name="Floor" type="StaticBody" parent="."]
+
+[node name="FloorMesh" type="MeshInstance" parent="Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0 )
+material_override = SubResource( 3 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0 )
+shape = SubResource( 2 )
+
+[node name="Obstacles" type="Spatial" parent="."]
+
+[node name="Obstacle" parent="Obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5901, 0, -1.85167 )
+
+[node name="Obstacle2" parent="Obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.4064 )
+
+[node name="Obstacle3" parent="Obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77356, 0, -2.19522 )
+
+[node name="Obstacle4" parent="Obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35649, 0, -6.56322 )
+
+[node name="Obstacle5" parent="Obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.62614, 0, -2.57936 )
+
+[node name="Obstacle6" parent="Obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.06151, 0, -5.13409 )
+
+[node name="Obstacle7" parent="Obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51885, 0, -3.91329 )
+
+[node name="Obstacle8" parent="Obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.418, 0, -7.29092 )
+
+[node name="Obstacle9" parent="Obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21233, 0, -4.94028 )
+
+[node name="Obstacle10" parent="Obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77696, 0, -7.49501 )
+
+[node name="Obstacle11" parent="Obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.31962, 0, -6.2742 )
+
+[node name="Obstacle12" parent="Obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.420473, 0, -9.65183 )
+
+[node name="Obstacle13" parent="Obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84917, 0, -5.66797 )
+
+[node name="Obstacle14" parent="Obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28454, 0, -8.2227 )
+
+[node name="Obstacle15" parent="Obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.258111, 0, -7.00189 )
+
+[node name="Obstacle16" parent="Obstacles" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64103, 0, -10.3795 )
+
+[connection signal="in_mind" from="Player" to="Cursor" method="_on_Player_in_mind"]
+[connection signal="move_beetle" from="Player" to="Path/PathFollow/Beetle" method="_on_Player_move_beetle"]
+[connection signal="out_mind" from="Player" to="Cursor" method="_on_Player_out_mind"]
+
+[editable path="Player"]
+[editable path="Player/Camera"]

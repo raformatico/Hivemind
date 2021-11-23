@@ -1,9 +1,6 @@
 extends Path
 
 
-# Declare member variables here. Examples:
-# var a: int = 2
-# var b: String = "text"
 var center := Vector2.ZERO
 var last_point
 onready var beetle := $PathFollow/Beetle
