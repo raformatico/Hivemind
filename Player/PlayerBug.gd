@@ -52,7 +52,7 @@ func _ready() -> void:
 		animation_state = characterAnimationTree.get("parameters/playback")
 		animation_state.start("Idle_loop")
 		character_version="v1"
-		
+	
 	body.set_as_toplevel(true)
 
 func _process(delta: float) -> void:
@@ -112,6 +112,10 @@ func _physics_process(delta: float) -> void:
 		snap = Vector3.ZERO
 		gravity_vector = Vector3.UP * jump
 		animation_state.travel("Jump")
+	
+	#Close game on ESC
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
 	
 	#make it move
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)

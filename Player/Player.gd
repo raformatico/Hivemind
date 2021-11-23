@@ -27,8 +27,8 @@ onready var camera := $Camera
 func _ready() -> void:
 	if get_node("PhilosopherBug") !=null:
 		 body=$PhilosopherBug 
-
 	body.set_as_toplevel(true)
+	
 
 
 func _process(delta: float) -> void:
