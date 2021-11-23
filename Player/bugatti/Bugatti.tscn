@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player/Bugatti V1/Material_001.material" type="Material" id=1]
 [ext_resource path="res://Player/Bugatti V1/BUGATTI_ACTIONS_V1.glb" type="PackedScene" id=2]
@@ -18,24 +18,24 @@ animation = "Jump"
 [sub_resource type="AnimationNodeAnimation" id=5]
 animation = "Idle·loop"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
-animation = "Walk·loop"
-
 [sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Run·loop"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "Walk·loop"
 
 [sub_resource type="AnimationNodeBlendSpace1D" id=8]
 blend_point_0/node = SubResource( 5 )
 blend_point_0/pos = 0.0
-blend_point_1/node = SubResource( 6 )
-blend_point_1/pos = 7.0
-blend_point_2/node = SubResource( 7 )
-blend_point_2/pos = 12.0
+blend_point_1/node = SubResource( 7 )
+blend_point_1/pos = 5.9
+blend_point_2/node = SubResource( 21 )
+blend_point_2/pos = 0.2
 max_space = 12.0
 value_label = "Speed"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=9]
-xfade_time = 1.0
+xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=10]
 xfade_time = 1.0
@@ -53,24 +53,31 @@ xfade_time = 1.0
 xfade_time = 1.0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=15]
-xfade_time = 0.5
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
 xfade_time = 0.1
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+xfade_time = 0.3
+
 [sub_resource type="AnimationNodeStateMachine" id=17]
 states/Connect_loop/node = SubResource( 1 )
-states/Connect_loop/position = Vector2( 150, 165 )
+states/Connect_loop/position = Vector2( -55, 158 )
 states/Hover_loop/node = SubResource( 2 )
-states/Hover_loop/position = Vector2( 329, 158 )
+states/Hover_loop/position = Vector2( 203, -47 )
 states/Idle_loop/node = SubResource( 3 )
 states/Idle_loop/position = Vector2( 34, 23 )
 states/Jump/node = SubResource( 4 )
-states/Jump/position = Vector2( 492, 139 )
+states/Jump/position = Vector2( 120, 169 )
 states/Moving_loop/node = SubResource( 8 )
 states/Moving_loop/position = Vector2( 302, 30 )
-transitions = [ "Idle_loop", "Moving_loop", SubResource( 9 ), "Moving_loop", "Idle_loop", SubResource( 10 ), "Idle_loop", "Connect_loop", SubResource( 11 ), "Connect_loop", "Idle_loop", SubResource( 12 ), "Moving_loop", "Hover_loop", SubResource( 13 ), "Hover_loop", "Moving_loop", SubResource( 14 ), "Moving_loop", "Jump", SubResource( 15 ), "Jump", "Moving_loop", SubResource( 16 ) ]
+transitions = [ "Idle_loop", "Moving_loop", SubResource( 9 ), "Moving_loop", "Idle_loop", SubResource( 10 ), "Idle_loop", "Connect_loop", SubResource( 11 ), "Connect_loop", "Idle_loop", SubResource( 12 ), "Moving_loop", "Hover_loop", SubResource( 13 ), "Hover_loop", "Moving_loop", SubResource( 14 ), "Moving_loop", "Jump", SubResource( 15 ), "Jump", "Moving_loop", SubResource( 16 ), "Idle_loop", "Jump", SubResource( 19 ), "Idle_loop", "Hover_loop", SubResource( 20 ) ]
 start_node = "Idle_loop"
+graph_offset = Vector2( -290.786, -86.04 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=18]
 
@@ -87,4 +94,4 @@ tree_root = SubResource( 17 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 18 )
-parameters/Moving_loop/blend_position = 0
+parameters/Moving_loop/blend_position = 5.92834
