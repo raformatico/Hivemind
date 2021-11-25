@@ -184,7 +184,6 @@ func _physics_process(delta: float) -> void:
 				var rayOrigin = camera.camera.project_ray_origin(center)
 				var rayEnd = rayOrigin + camera.camera.project_ray_normal(center) * 2000
 				var intersection = space_state.intersect_ray(rayOrigin, rayEnd)
-							
 				if intersection.empty():
 					if last_intersection != null:
 							last_intersection.collider.move(Vector3.ZERO)

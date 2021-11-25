@@ -4,7 +4,7 @@
 [ext_resource path="res://World/Obstacle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Cursor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Objects/Lymph/Lymph.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Characters/puzzle_area.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpatialMaterial" id=3]
@@ -118,26 +118,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.258111, 0, -7.00189 )
 [node name="Obstacle16" parent="Obstacles" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64103, 0, -10.3795 )
 
-[node name="Lymph" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8496, 0, -4.92716 )
-
-[node name="Lymph2" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.94016, 0, -4.92716 )
-
-[node name="Lymph3" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8476, 0, -4.92716 )
-
-[node name="Lymph4" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8476, 0, 2.19772 )
-
-[node name="Lymph5" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4065, 0, 2.19772 )
+[node name="puzzle_area" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.92974, 0, -13.858 )
 
 [connection signal="glide_restarted" from="Player" to="UI" method="_on_Player_glide_restarted"]
 [connection signal="glide_started" from="Player" to="UI" method="_on_Player_glide_started"]
 [connection signal="in_mind" from="Player" to="Cursor" method="_on_Player_in_mind"]
 [connection signal="lymph_changed" from="Player" to="UI" method="_on_Player_lymph_changed"]
 [connection signal="out_mind" from="Player" to="Cursor" method="_on_Player_out_mind"]
+[connection signal="body_entered" from="puzzle_area" to="Cursor" method="_on_puzzle_area_body_entered"]
+[connection signal="body_exited" from="puzzle_area" to="Cursor" method="_on_puzzle_area_body_exited"]
 
 [editable path="Player"]
 [editable path="Player/Camera"]

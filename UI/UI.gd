@@ -24,16 +24,6 @@ func _ready() -> void:
 	stamina.modulate = Color(1,1,1,0)
 
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("jump"):
-		if drain:
-			drain = false
-			_show_stamina()
-		else:
-			_hide_stamina()
-			drain = true
-			
-
 func change_lymph(lymph_count : int) -> void:
 	lymph.frame = lymph_count
 
