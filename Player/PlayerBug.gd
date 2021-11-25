@@ -23,11 +23,17 @@ var direction = Vector3()
 var velocity = Vector3()
 var gravity_vector = Vector3()
 var movement = Vector3()
+var lymph: int = 0 setget set_lymph, get_lymph
 
 signal in_mind
 signal out_mind
 signal move_beetle(position)
+signal lymph_changed(lymph_count)
+signal glide_started(glide_time)
+signal glide_restarted(reset_time)
 
+export var glide_max_time : float = 10
+export var reset_max_time : float = 3
 onready var acceleration := acceleration_floor
 onready var speed := speed_default
 onready var gravity := gravity_default
@@ -44,7 +50,23 @@ var character_version="v0"
 var animation_state
 var hovering_=false
 
+func get_lymph() -> int:
+	return lymph
+
+
+func set_lymph(new_lymph : int) -> void:
+	lymph = new_lymph
+
+
+func on_lymph_picked() -> void:
+	lymph += 1
+	emit_signal("lymph_changed", lymph)
+
+
 func _ready() -> void:
+	glide_timer.wait_time = glide_max_time
+	glide_reset.wait_time = reset_max_time
+	Global.connect("lymph_picked", self, "on_lymph_picked")
 	center = get_viewport().size/2
 	state = states.IDLE
 	#remove ifs when definitive character is ready.
@@ -93,7 +115,6 @@ func _physics_process(delta: float) -> void:
 
 	var velocity_=velocity
 	
-	print(state)
 	var state_machine = characterAnimationTree["parameters/playback"]
 	match state:
 		states.IDLE:
@@ -102,7 +123,6 @@ func _physics_process(delta: float) -> void:
 				emit_signal("in_mind")
 
 			elif Input.is_action_just_pressed("glide") and glide_reset.is_stopped():
-				print("Glide")
 				glide_timer.start()
 				state = states.GLIDE
 				animation_state.travel("Hover_loop")
@@ -122,12 +142,12 @@ func _physics_process(delta: float) -> void:
 				_on_glide()
 			elif Input.is_action_just_released("glide"):
 				if not glide_timer.is_stopped():
-					glide_timer.stop()
-					glide_reset.start()
+					_restart_timer()
 					_out_of_glide()
 				state=states.WALK
+			else:
+				state=states.WALK
 
-			pass
 		states.RUN:						
 			if Input.is_action_just_pressed("jump") and is_on_floor() and glide_timer.is_stopped():
 				snap = Vector3.ZERO
@@ -135,8 +155,8 @@ func _physics_process(delta: float) -> void:
 				state=states.JUMP
 				animation_state.travel("Jump")
 			elif Input.is_action_just_pressed("glide") and glide_reset.is_stopped():
-				print("Glide")
 				glide_timer.start()
+				emit_signal("glide_started", glide_max_time)
 				state = states.GLIDE
 				animation_state.travel("Hover_loop")
 				_on_glide()						
@@ -201,7 +221,7 @@ func _physics_process(delta: float) -> void:
 				state=states.JUMP
 				animation_state.travel("Jump")	
 			elif Input.is_action_just_pressed("glide") and glide_reset.is_stopped():
-				print("Glide")
+				emit_signal("glide_started", glide_max_time)
 				glide_timer.start()
 				state = states.GLIDE
 				animation_state.travel("Hover_loop")
@@ -304,6 +324,9 @@ func clean(previous_state) -> void:
 func _on_glide_timer_timeout() -> void:
 	glide_reset.start()
 	speed = speed_default
+	glide_reset.wait_time = reset_max_time
+	glide_reset.start()
+	emit_signal("glide_restarted", reset_max_time)
 
 func _on_glide():
 	acceleration = acceleration_glide
@@ -313,8 +336,15 @@ func _on_glide():
 	hovering_=true
 	animation_state.travel("Hover_loop")
 
+func _restart_timer():
+	var proportion_left : float = glide_timer.time_left/glide_max_time
+	glide_timer.stop()
+	var reset_time : float = reset_max_time * (1 - proportion_left)
+	glide_reset.wait_time = reset_time
+	glide_reset.start()
+	emit_signal("glide_restarted", reset_time)
+
 func _out_of_glide():
-	print("Glide_out")
 	speed = speed_default
 	gravity = gravity_default
 

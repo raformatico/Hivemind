@@ -30,6 +30,10 @@ config/name="Hivemind"
 run/main_scene="res://World/WorldBugatti-jjramos.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Global/Global.gd"
+
 [display]
 
 window/size/width=1920

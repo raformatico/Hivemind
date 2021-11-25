@@ -163,7 +163,6 @@ func _physics_process(delta: float) -> void:
 			
 	
 	if Input.is_action_just_pressed("glide") and glide_reset.is_stopped():
-		print("Glide")
 		glide_timer.start()
 		_on_glide()
 	
@@ -246,7 +245,6 @@ func _on_glide():
 	animation_state.travel("Hover_loop")
 
 func _out_of_glide():
-	print("Glide_out")
 	speed = speed_default
 	gravity = gravity_default
 

@@ -25,48 +25,61 @@ margin_left = 20.0
 margin_top = 20.0
 margin_right = -20.0
 margin_bottom = -20.0
+mouse_filter = 2
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="stamina_fade" type="Tween" parent="."]
+
 [node name="stamina_tween" type="Tween" parent="."]
+
+[node name="stamina_tween_drain" type="Tween" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_right = 1880.0
 margin_bottom = 1040.0
+mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="up_container" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 1880.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 0, 120 )
+mouse_filter = 2
 
-[node name="lymph" type="AnimatedSprite" parent="VBoxContainer/HBoxContainer"]
+[node name="lymph" type="AnimatedSprite" parent="VBoxContainer/up_container"]
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
 centered = false
 
-[node name="HBoxContainer2" type="MarginContainer" parent="VBoxContainer"]
+[node name="center_container" type="MarginContainer" parent="VBoxContainer"]
 margin_top = 124.0
 margin_right = 1880.0
-margin_bottom = 836.0
+margin_bottom = 861.0
+mouse_filter = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 840.0
+[node name="bot_container" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 865.0
 margin_right = 1880.0
 margin_bottom = 1040.0
 rect_min_size = Vector2( 0, 120 )
+mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer3"]
-margin_right = 1676.0
-margin_bottom = 200.0
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/bot_container"]
+margin_right = 1483.0
+margin_bottom = 175.0
 rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
 size_flags_horizontal = 3
 
-[node name="stamina" type="TextureProgress" parent="VBoxContainer/HBoxContainer3"]
-margin_left = 1680.0
+[node name="stamina" type="TextureProgress" parent="VBoxContainer/bot_container"]
+margin_left = 1487.0
 margin_right = 1880.0
-margin_bottom = 200.0
+margin_bottom = 175.0
 texture_over = ExtResource( 7 )
 texture_progress = ExtResource( 8 )
+fill_mode = 3
+
+[connection signal="tween_completed" from="stamina_tween_drain" to="." method="_on_stamina_tween_drain_tween_completed"]
