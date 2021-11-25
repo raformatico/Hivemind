@@ -9,8 +9,7 @@ func hide_cursor() -> void:
 
 
 func _ready() -> void:
-	
-	pass # Replace with function body.
+	hide_cursor()
 
 
 func _on_Player_in_mind() -> void:

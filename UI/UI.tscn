@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://UI/Lymph container/Lymph_4.png" type="Texture" id=1]
+[ext_resource path="res://UI/Lymph container/Lymph_0empty.png" type="Texture" id=2]
+[ext_resource path="res://UI/Lymph container/Lymph_1.png" type="Texture" id=3]
+[ext_resource path="res://UI/Lymph container/Lymph_5.png" type="Texture" id=4]
+[ext_resource path="res://UI/Lymph container/Lymph_2.png" type="Texture" id=5]
+[ext_resource path="res://UI/Lymph container/Lymph_3.png" type="Texture" id=6]
+[ext_resource path="res://UI/hover_stamina/stamina_over.png" type="Texture" id=7]
+[ext_resource path="res://UI/hover_stamina/stamina_progress.png" type="Texture" id=8]
+[ext_resource path="res://UI/UI.gd" type="Script" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="UI" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stamina_tween" type="Tween" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1880.0
+margin_bottom = 1040.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 1880.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
+
+[node name="lymph" type="AnimatedSprite" parent="VBoxContainer/HBoxContainer"]
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 1 )
+centered = false
+
+[node name="HBoxContainer2" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 124.0
+margin_right = 1880.0
+margin_bottom = 836.0
+size_flags_vertical = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 840.0
+margin_right = 1880.0
+margin_bottom = 1040.0
+rect_min_size = Vector2( 0, 120 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer3"]
+margin_right = 1676.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 50, 0 )
+size_flags_horizontal = 3
+
+[node name="stamina" type="TextureProgress" parent="VBoxContainer/HBoxContainer3"]
+margin_left = 1680.0
+margin_right = 1880.0
+margin_bottom = 200.0
+texture_over = ExtResource( 7 )
+texture_progress = ExtResource( 8 )
