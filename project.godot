@@ -38,9 +38,10 @@ Global="*res://Global/Global.gd"
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
-window/size/test_width=960
-window/size/test_height=540
+window/size/test_width=1440
+window/size/test_height=810
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 
 [input]
 

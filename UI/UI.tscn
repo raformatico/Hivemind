@@ -1,18 +1,33 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://UI/Lymph container/Lymph_4.png" type="Texture" id=1]
-[ext_resource path="res://UI/Lymph container/Lymph_0empty.png" type="Texture" id=2]
-[ext_resource path="res://UI/Lymph container/Lymph_1.png" type="Texture" id=3]
-[ext_resource path="res://UI/Lymph container/Lymph_5.png" type="Texture" id=4]
-[ext_resource path="res://UI/Lymph container/Lymph_2.png" type="Texture" id=5]
-[ext_resource path="res://UI/Lymph container/Lymph_3.png" type="Texture" id=6]
+[ext_resource path="res://UI/Lymph container/Lymph_0.png" type="Texture" id=1]
 [ext_resource path="res://UI/hover_stamina/stamina_over.png" type="Texture" id=7]
 [ext_resource path="res://UI/hover_stamina/stamina_progress.png" type="Texture" id=8]
 [ext_resource path="res://UI/UI.gd" type="Script" id=9]
 
+[sub_resource type="StreamTexture" id=3]
+flags = 4
+load_path = "res://.import/Lymph_1.png-91d21125343a9339450bf1d7c18792e8.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 4
+load_path = "res://.import/Lymph_2.png-b5b7ca75199ed9180089d97ca1c044e0.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 4
+load_path = "res://.import/Lymph_3.png-305476e776726d690c3555d7ef6a03db.stex"
+
+[sub_resource type="StreamTexture" id=6]
+flags = 4
+load_path = "res://.import/Lymph_4.png-2539ba93ff6de3a1d3fcaeb8f986c8e6.stex"
+
+[sub_resource type="StreamTexture" id=7]
+flags = 4
+load_path = "res://.import/Lymph_5.png-5d997351d82244fc0e7254a8fbab4a52.stex"
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 1 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -21,10 +36,10 @@ animations = [ {
 [node name="UI" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = -20.0
+margin_left = 40.0
+margin_top = 40.0
+margin_right = -40.0
+margin_bottom = -40.0
 mouse_filter = 2
 script = ExtResource( 9 )
 __meta__ = {
@@ -38,46 +53,43 @@ __meta__ = {
 [node name="stamina_tween_drain" type="Tween" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 1880.0
-margin_bottom = 1040.0
+margin_right = 1840.0
+margin_bottom = 1000.0
 mouse_filter = 2
 
 [node name="up_container" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 1880.0
+margin_right = 1840.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 0, 120 )
 mouse_filter = 2
 
 [node name="lymph" type="AnimatedSprite" parent="VBoxContainer/up_container"]
-scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
 centered = false
 
 [node name="center_container" type="MarginContainer" parent="VBoxContainer"]
 margin_top = 124.0
-margin_right = 1880.0
-margin_bottom = 861.0
+margin_right = 1840.0
+margin_bottom = 937.0
 mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="bot_container" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 865.0
-margin_right = 1880.0
-margin_bottom = 1040.0
-rect_min_size = Vector2( 0, 120 )
+margin_top = 941.0
+margin_right = 1840.0
+margin_bottom = 1000.0
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/bot_container"]
-margin_right = 1483.0
-margin_bottom = 175.0
-rect_min_size = Vector2( 50, 0 )
+margin_right = 1704.0
+margin_bottom = 59.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="stamina" type="TextureProgress" parent="VBoxContainer/bot_container"]
-margin_left = 1487.0
-margin_right = 1880.0
-margin_bottom = 175.0
+margin_left = 1708.0
+margin_right = 1840.0
+margin_bottom = 59.0
 texture_over = ExtResource( 7 )
 texture_progress = ExtResource( 8 )
 fill_mode = 3
