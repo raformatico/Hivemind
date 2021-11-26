@@ -25,7 +25,7 @@ var lymph: int = 0 setget set_lymph, get_lymph
 signal in_mind
 signal out_mind
 signal change_cursor(cursor_anim,speed)
-signal move_beetle(position)
+signal move_puzzle(position)
 signal lymph_changed(lymph_count)
 signal glide_started(glide_time)
 signal glide_restarted(reset_time)
@@ -210,18 +210,18 @@ func _physics_process(delta: float) -> void:
 							last_intersection = null"""
 				elif intersection.collider.is_in_group("Puzzle"):
 					last_intersection = intersection
-					emit_signal("move_beetle",intersection.position)
+					emit_signal("move_puzzle",intersection.position)
 				else:
 					if last_intersection != null:
-						emit_signal("move_beetle",Vector3.ZERO)
+						emit_signal("move_puzzle",Vector3.ZERO)
 						last_intersection = null
 			else:
-				emit_signal("move_beetle",Vector3.ZERO)
+				emit_signal("move_puzzle",Vector3.ZERO)
 				emit_signal("out_mind")
 				state=states.IDLE
 			"""if Input.is_action_just_released("mind_connection"):
 				if last_intersection != null:
-					emit_signal("move_beetle",Vector3.ZERO)
+					emit_signal("move_puzzle",Vector3.ZERO)
 					last_intersection = null
 			
 			if Input.is_action_just_pressed("mind_trick"):	

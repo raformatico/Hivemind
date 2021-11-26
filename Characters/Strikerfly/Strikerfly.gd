@@ -10,10 +10,8 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-func _on_Player_move_beetle(position_local) -> void:
+func _on_Player_move_puzzle(position_local) -> void:
 	if player_in_area:
-		if Global.DEBUG:
-			Global.emit_signal("debug_write","MUEVETE")
 		if position_local == Vector3.ZERO:
 			direction = Vector2.ZERO
 		else:
@@ -25,14 +23,10 @@ func _on_Player_move_beetle(position_local) -> void:
 
 func _on_puzzle_area_body_entered(body: Node) -> void:
 	if body is Player:
-		if Global.DEBUG:
-			Global.emit_signal("debug_write","ENTRA en el area de striker")
 		player_in_area = true
 
 
 func _on_puzzle_area_body_exited(body: Node) -> void:
 	if body is Player:
-		if Global.DEBUG:
-			Global.emit_signal("debug_write","SALE en el area de striker")
 		player_in_area = false
 
