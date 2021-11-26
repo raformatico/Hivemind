@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Characters/Strikerfly/Strikerflymat.material" type="Material" id=1]
+[ext_resource path="res://Characters/Strikerfly/Strikerfly.gd" type="Script" id=2]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Strikerfly_Cube001"
@@ -292,7 +293,8 @@ blend_point_1/node = SubResource( 8 )
 blend_point_1/pos = 1.0
 value_label = "focus"
 
-[node name="Strikerfly" type="KinematicBody"]
+[node name="Strikerfly" type="KinematicBody" groups=["Puzzle"]]
+script = ExtResource( 2 )
 
 [node name="StrikerFly" type="Spatial" parent="."]
 

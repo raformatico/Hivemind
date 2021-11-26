@@ -1107,7 +1107,8 @@ start_node = "Start"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=29]
 
-[node name="GIANT_BEETLE" type="KinematicBody" groups=["Beetle"]]
+[node name="GIANT_BEETLE" type="KinematicBody" groups=["Puzzle"]]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 script = ExtResource( 1 )
 velocity = 1
 

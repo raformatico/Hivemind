@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://World/Path.gd" type="Script" id=1]
+[ext_resource path="res://World/BeetleTest.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Characters/puzzle_area.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Curve3D" id=4]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 1.07033, 0, 0.74153, 0, 0, 0, 0, 0, 0, -6.70343, 0, 2.19225, 0, 0, 0, 0, 0, 0, -12.1416, 0, 2.91966 ),
+"tilts": PoolRealArray( 0, 0, 0 )
+}
+
+[node name="Path" type="Path"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.50749, 0, -4.60689 )
+curve = SubResource( 4 )
+script = ExtResource( 1 )
+
+[node name="PathFollow" type="PathFollow" parent="."]
+transform = Transform( 0.900224, 0, -0.435428, 0, 1, 0, 0.435428, 0, 0.900224, -1.87746, 0, 1.29164 )
+offset = 3.0
+loop = false
+
+[node name="Beetle" parent="PathFollow" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="puzzle_area" parent="PathFollow/Beetle" instance=ExtResource( 3 )]
+
+[connection signal="body_entered" from="PathFollow/Beetle/puzzle_area" to="PathFollow/Beetle" method="_on_puzzle_area_body_entered"]
+[connection signal="body_exited" from="PathFollow/Beetle/puzzle_area" to="PathFollow/Beetle" method="_on_puzzle_area_body_exited"]

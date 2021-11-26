@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Characters/Strikerfly/Strikerfly.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Strikerfly/StrikerflyPath.gd" type="Script" id=2]
+[ext_resource path="res://Characters/puzzle_area.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Curve3D" id=1]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 0, -3.09983, -8.4323, 0, 0, 0, 0, 0, 0, 0, 2.7816, 14.3239 ),
+"tilts": PoolRealArray( 0, 0 )
+}
+
+[node name="StrikerflyPath" type="Path"]
+curve = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="PathFollow" type="PathFollow" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40832, 5.14129 )
+offset = 14.05
+
+[node name="Strikerfly" parent="PathFollow" instance=ExtResource( 1 )]
+
+[node name="puzzle_area" parent="PathFollow/Strikerfly" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[connection signal="body_entered" from="PathFollow/Strikerfly/puzzle_area" to="PathFollow/Strikerfly" method="_on_puzzle_area_body_entered"]
+[connection signal="body_exited" from="PathFollow/Strikerfly/puzzle_area" to="PathFollow/Strikerfly" method="_on_puzzle_area_body_exited"]

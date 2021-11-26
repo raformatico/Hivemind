@@ -12,7 +12,7 @@ onready var camera := $CameraIn/Camera
 # camera properties
 
 export var up_limit := -55
-export var low_limit := 20
+export var low_limit := 30
 export var fov_velocity := 10
 export var translation_velocity := 10
 export var near_fov := 30

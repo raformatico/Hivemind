@@ -6,7 +6,7 @@
 
 [sub_resource type="Curve3D" id=1]
 _data = {
-"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -3, 0, -14, 0, 0, 0, 0, 0, 0, -3, 0, 12 ),
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 0, 0, -11, 0, 0, 0, 0, 0, 0, 0, 0, 16 ),
 "tilts": PoolRealArray( 0, 0 )
 }
 
@@ -15,9 +15,13 @@ curve = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="PathFollow" type="PathFollow" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3.26416 )
-offset = 10.73
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.07795 )
+offset = 14.05
 
 [node name="GIANT_BEETLE" parent="PathFollow" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -7.45058e-09 )
 
 [node name="puzzle_area" parent="PathFollow/GIANT_BEETLE" instance=ExtResource( 3 )]
+
+[connection signal="body_entered" from="PathFollow/GIANT_BEETLE/puzzle_area" to="PathFollow/GIANT_BEETLE" method="_on_puzzle_area_body_entered"]
+[connection signal="body_exited" from="PathFollow/GIANT_BEETLE/puzzle_area" to="PathFollow/GIANT_BEETLE" method="_on_puzzle_area_body_exited"]

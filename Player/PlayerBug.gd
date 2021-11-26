@@ -8,17 +8,13 @@ export var angular_velocity := 30
 export var gravity_default := 9.8
 export var gravity_glide := 6
 export var jump := 5
-export var camera_acceleration := 40
 export var mouse_sense := 0.1
 export var joystick_sense := 1
-export var up_limit := -55
-export var low_limit := 14
 export var speed_default := 7
 export var speed_glide := 12
 export var gliding_factor := 2
 
 enum states {IDLE, WALK, RUN, GLIDE, MIND, JUMP}
-var in_puzzle = false
 var snap
 var direction = Vector3()
 var velocity = Vector3()
@@ -34,6 +30,7 @@ signal lymph_changed(lymph_count)
 signal glide_started(glide_time)
 signal glide_restarted(reset_time)
 
+
 export var glide_max_time : float = 10
 export var reset_max_time : float = 3
 onready var acceleration := acceleration_floor
@@ -44,6 +41,7 @@ onready var camera := $Camera
 onready var glide_timer := $glide_timer
 onready var glide_reset := $glide_reset
 
+var puzzle_parent = null
 var puzzle_transform : Transform = Transform(Vector3.ZERO,Vector3.ZERO,Vector3.ZERO,Vector3.ZERO)
 var center := Vector2.ZERO
 var last_intersection = null
@@ -112,15 +110,14 @@ func _physics_process(delta: float) -> void:
 	# Rotate keys around Y by camera rotation
 	direction = direction_keys.rotated(Vector3.UP, camera_rotation).normalized()
 	
-	if in_puzzle and not state == states.MIND:
+	if not puzzle_parent == null and not state == states.MIND:
 		var angle = get_angle_to_puzzle(camera_rotation)
 		var rotation_speed = range_lerp(angle, 3.14, 0, 1, 4)
-		get_node("../Cursor").cursor.speed_scale = rotation_speed
 		var space_state = get_world().direct_space_state
 		var rayOrigin = camera.camera.project_ray_origin(center)
 		var rayEnd = rayOrigin + camera.camera.project_ray_normal(center) * 200
 		var intersection = space_state.intersect_ray(rayOrigin, rayEnd)
-		if not intersection.empty() and intersection.collider.is_in_group("Beetle"):
+		if not intersection.empty() and intersection.collider == puzzle_parent:
 			emit_signal("change_cursor","hold_RMB",1)
 			if Input.is_action_just_pressed("mind_connection"):
 				emit_signal("in_mind")
@@ -211,7 +208,7 @@ func _physics_process(delta: float) -> void:
 					"""if last_intersection != null:
 							last_intersection.collider.move(Vector3.ZERO)
 							last_intersection = null"""
-				elif intersection.collider.is_in_group("Beetle"):
+				elif intersection.collider.is_in_group("Puzzle"):
 					last_intersection = intersection
 					emit_signal("move_beetle",intersection.position)
 				else:
@@ -380,13 +377,13 @@ func get_angle_to_puzzle(camera_rotation) -> float:
 	return looking_at.angle_to(from_puzzle_to_me)
 
 
-func on_puzzle_entered(puzzle_transform_new : Transform) -> void:
+func on_puzzle_entered(puzzle_transform_new : Transform, parent) -> void:
 	puzzle_transform = puzzle_transform_new
-	in_puzzle = true
+	puzzle_parent = parent
 	
 	
 func on_puzzle_exited() -> void:
-	in_puzzle = false
+	puzzle_parent = null
 	
 	
 	

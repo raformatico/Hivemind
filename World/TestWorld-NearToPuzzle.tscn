@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player/bugatti/PlayerBugatti.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Obstacle.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://Characters/GIANT BEETLE/GIANT_BEETLE.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Characters/GIANT BEETLE/BeetlePath.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Test/debug_label.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Test/TestPathBeetle.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Characters/Strikerfly/StrikerflyPath.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.117647, 0.113725, 0.168627, 1 )
@@ -21,6 +24,8 @@ size = Vector3( 100, 0.2, 100 )
 extents = Vector3( 50, 0.1, 50 )
 
 [node name="Spatial" type="Spatial"]
+
+[node name="debug_label" parent="." instance=ExtResource( 9 )]
 
 [node name="HowTo" type="Label" parent="."]
 visible = false
@@ -54,8 +59,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5882, 0, -31.5406 )
 visible = false
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.44815, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35565, 0, 9.24956 )
 jump = 7
+
+[node name="Camera" parent="Player" index="3"]
+low_limit = 30
 
 [node name="Floor" type="StaticBody" parent="."]
 
@@ -70,10 +78,19 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0 )
 shape = SubResource( 2 )
 
+[node name="BeetlePath" parent="." instance=ExtResource( 8 )]
+transform = Transform( 0.258364, 0, 0.966048, 0, 1, 0, -0.966048, 0, 0.258364, 28.5259, 0, -29.9176 )
+
+[node name="BeetlePath2" parent="." instance=ExtResource( 8 )]
+transform = Transform( 0.777925, 0, 0.628357, 0, 1, 0, -0.628357, 0, 0.777925, 15.3928, 0, -1.01763 )
+
+[node name="Path" parent="." instance=ExtResource( 10 )]
+transform = Transform( 0.649275, 0, -0.760553, 0, 1, 0, 0.760553, 0, 0.649275, -6.14677, 0, -16.3728 )
+
 [node name="Obstacles" type="Spatial" parent="."]
 
 [node name="Obstacle" parent="Obstacles" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5901, 0, -1.85167 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5837, 0, -2.37591 )
 
 [node name="Obstacle2" parent="Obstacles" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.4064 )
@@ -120,8 +137,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.258111, 0, -7.00189 )
 [node name="Obstacle16" parent="Obstacles" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64103, 0, -10.3795 )
 
-[node name="BeetlePath" parent="." instance=ExtResource( 8 )]
-transform = Transform( 0.258364, 0, 0.966048, 0, 1, 0, -0.966048, 0, 0.258364, -9.1946, 0, -13.4096 )
+[node name="StrikerflyPath" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.1511, 8.52869, 0 )
+
+[node name="puzzle_area" parent="StrikerflyPath/PathFollow/Strikerfly" index="4"]
+transform = Transform( -2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 0, 0, 0 )
 
 [connection signal="body_entered" from="GIANT_BEETLE/puzzle_area" to="Cursor" method="_on_puzzle_area_body_entered"]
 [connection signal="body_exited" from="GIANT_BEETLE/puzzle_area" to="Cursor" method="_on_puzzle_area_body_exited"]
@@ -130,9 +150,21 @@ transform = Transform( 0.258364, 0, 0.966048, 0, 1, 0, -0.966048, 0, 0.258364, -
 [connection signal="glide_started" from="Player" to="UI" method="_on_Player_glide_started"]
 [connection signal="lymph_changed" from="Player" to="UI" method="_on_Player_lymph_changed"]
 [connection signal="move_beetle" from="Player" to="BeetlePath/PathFollow/GIANT_BEETLE" method="_on_Player_move_beetle"]
+[connection signal="move_beetle" from="Player" to="BeetlePath2/PathFollow/GIANT_BEETLE" method="_on_Player_move_beetle"]
+[connection signal="move_beetle" from="Player" to="Path/PathFollow/Beetle" method="_on_Player_move_beetle"]
+[connection signal="move_beetle" from="Player" to="StrikerflyPath/PathFollow/Strikerfly" method="_on_Player_move_beetle"]
 [connection signal="body_entered" from="BeetlePath/PathFollow/GIANT_BEETLE/puzzle_area" to="Cursor" method="_on_puzzle_area_body_entered"]
 [connection signal="body_exited" from="BeetlePath/PathFollow/GIANT_BEETLE/puzzle_area" to="Cursor" method="_on_puzzle_area_body_exited"]
+[connection signal="body_entered" from="BeetlePath2/PathFollow/GIANT_BEETLE/puzzle_area" to="Cursor" method="_on_puzzle_area_body_entered"]
+[connection signal="body_exited" from="BeetlePath2/PathFollow/GIANT_BEETLE/puzzle_area" to="Cursor" method="_on_puzzle_area_body_exited"]
+[connection signal="body_entered" from="Path/PathFollow/Beetle/puzzle_area" to="Cursor" method="_on_puzzle_area_body_entered"]
+[connection signal="body_exited" from="Path/PathFollow/Beetle/puzzle_area" to="Cursor" method="_on_puzzle_area_body_exited"]
+[connection signal="body_entered" from="StrikerflyPath/PathFollow/Strikerfly/puzzle_area" to="Cursor" method="_on_puzzle_area_body_entered"]
+[connection signal="body_exited" from="StrikerflyPath/PathFollow/Strikerfly/puzzle_area" to="Cursor" method="_on_puzzle_area_body_exited"]
 
 [editable path="Player"]
 [editable path="Player/Camera"]
 [editable path="BeetlePath"]
+[editable path="BeetlePath2"]
+[editable path="Path"]
+[editable path="StrikerflyPath"]
