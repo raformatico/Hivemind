@@ -24,16 +24,27 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
 margin_left = 926.0
-margin_top = 522.0
+margin_top = 495.0
 margin_right = 994.0
-margin_bottom = 557.0
+margin_bottom = 585.0
+custom_constants/vseparation = 20
 
-[node name="Button" type="Button" parent="CenterContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="CenterContainer/GridContainer"]
 margin_right = 68.0
 margin_bottom = 35.0
 text = "Resume"
 
-[connection signal="pressed" from="CenterContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
+[node name="Button2" type="Button" parent="CenterContainer/GridContainer"]
+margin_top = 55.0
+margin_right = 68.0
+margin_bottom = 90.0
+text = "Quit"
+
+[connection signal="pressed" from="CenterContainer/GridContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CenterContainer/GridContainer/Button2" to="." method="_on_Button2_pressed"]

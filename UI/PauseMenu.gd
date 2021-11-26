@@ -30,3 +30,7 @@ func _process(delta: float) -> void:
 
 func _on_Button_pressed() -> void:
 	hide_me()
+
+
+func _on_Button2_pressed() -> void:
+	get_tree().quit()

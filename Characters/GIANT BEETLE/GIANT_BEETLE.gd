@@ -32,8 +32,8 @@ func _physics_process(delta):
 	move_and_slide(get_global_transform().basis.z*velocity*delta,Vector3.UP)
 	var anim=animation_state.get_current_node()
 	
-	
-	print("- "+anim)
+	"""
+	#print("- "+anim)
 	match anim:
 		"Start":
 			if Input.is_action_just_pressed("jump"):
@@ -53,7 +53,7 @@ func _physics_process(delta):
 			else:
 				animation_state.travel("Idle180")
 			pass
-	
+	"""
 
 
 func _on_Player_move_beetle(position) -> void:

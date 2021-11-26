@@ -14,6 +14,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if beetle.direction != Vector2.ZERO:
+		var beetle_positive_path = last_point - Vector2(beetle.global_transform.origin.x,beetle.global_transform.origin.z)
 		if beetle.direction.dot(last_point) > 0:
 			path_follow.offset = lerp(path_follow.offset,path_follow.offset+5,0.10*delta)
 		else:

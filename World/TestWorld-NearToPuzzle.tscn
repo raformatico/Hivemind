@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player/bugatti/PlayerBugatti.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Obstacle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Cursor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Characters/puzzle_area.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Characters/GIANT BEETLE/GIANT_BEETLE.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Characters/GIANT BEETLE/BeetlePath.tscn" type="PackedScene" id=8]
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.117647, 0.113725, 0.168627, 1 )
@@ -28,21 +30,21 @@ margin_right = -966.0
 margin_bottom = -543.0
 rect_scale = Vector2( 2, 2 )
 text = "Este test es para probar:
-- La reserva de linfa (arriba a la izquierda)
-- La estamina (abajo a la derecha)
+- La integración de la aparición del cursor al acercarnos a un puzzle
 
-Se han de conectar las siguientes señales del player a UI:
-- lymph_changed
-- glide_started
-- glide_restarted
-
-Los objetos con linfa son las escenas heredadas Lymph.
-Añadirlas a la escena sin más ya que usan señales globales que ya están conectadas al Player."
+1. Poner como hijo del nodo del puzzle (GIANT_BEETLE) el área puzzle_area. Recomiendo crear los Paths y luego añadirlos al mundo
+2. Conectar las señales del puzzle_area body_entered y body_exited a la escena Cursor
+3. Conectar las señales de player change_cursor al Cursor"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="GIANT_BEETLE" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5882, 0, -31.5406 )
+
+[node name="puzzle_area" parent="GIANT_BEETLE" instance=ExtResource( 5 )]
 
 [node name="UI" parent="." instance=ExtResource( 7 )]
 
@@ -118,16 +120,19 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.258111, 0, -7.00189 )
 [node name="Obstacle16" parent="Obstacles" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64103, 0, -10.3795 )
 
-[node name="puzzle_area" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.92974, 0, -13.858 )
+[node name="BeetlePath" parent="." instance=ExtResource( 8 )]
+transform = Transform( 0.258364, 0, 0.966048, 0, 1, 0, -0.966048, 0, 0.258364, -9.1946, 0, -13.4096 )
 
+[connection signal="body_entered" from="GIANT_BEETLE/puzzle_area" to="Cursor" method="_on_puzzle_area_body_entered"]
+[connection signal="body_exited" from="GIANT_BEETLE/puzzle_area" to="Cursor" method="_on_puzzle_area_body_exited"]
+[connection signal="change_cursor" from="Player" to="Cursor" method="_on_Player_change_cursor"]
 [connection signal="glide_restarted" from="Player" to="UI" method="_on_Player_glide_restarted"]
 [connection signal="glide_started" from="Player" to="UI" method="_on_Player_glide_started"]
-[connection signal="in_mind" from="Player" to="Cursor" method="_on_Player_in_mind"]
 [connection signal="lymph_changed" from="Player" to="UI" method="_on_Player_lymph_changed"]
-[connection signal="out_mind" from="Player" to="Cursor" method="_on_Player_out_mind"]
-[connection signal="body_entered" from="puzzle_area" to="Cursor" method="_on_puzzle_area_body_entered"]
-[connection signal="body_exited" from="puzzle_area" to="Cursor" method="_on_puzzle_area_body_exited"]
+[connection signal="move_beetle" from="Player" to="BeetlePath/PathFollow/GIANT_BEETLE" method="_on_Player_move_beetle"]
+[connection signal="body_entered" from="BeetlePath/PathFollow/GIANT_BEETLE/puzzle_area" to="Cursor" method="_on_puzzle_area_body_entered"]
+[connection signal="body_exited" from="BeetlePath/PathFollow/GIANT_BEETLE/puzzle_area" to="Cursor" method="_on_puzzle_area_body_exited"]
 
 [editable path="Player"]
 [editable path="Player/Camera"]
+[editable path="BeetlePath"]

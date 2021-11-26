@@ -18,6 +18,7 @@ export var speed_glide := 12
 export var gliding_factor := 2
 
 enum states {IDLE, WALK, RUN, GLIDE, MIND, JUMP}
+var in_puzzle = false
 var snap
 var direction = Vector3()
 var velocity = Vector3()
@@ -27,6 +28,7 @@ var lymph: int = 0 setget set_lymph, get_lymph
 
 signal in_mind
 signal out_mind
+signal change_cursor(cursor_anim,speed)
 signal move_beetle(position)
 signal lymph_changed(lymph_count)
 signal glide_started(glide_time)
@@ -42,6 +44,7 @@ onready var camera := $Camera
 onready var glide_timer := $glide_timer
 onready var glide_reset := $glide_reset
 
+var puzzle_transform : Transform = Transform(Vector3.ZERO,Vector3.ZERO,Vector3.ZERO,Vector3.ZERO)
 var center := Vector2.ZERO
 var last_intersection = null
 var characterAnimationTree
@@ -67,6 +70,8 @@ func _ready() -> void:
 	glide_timer.wait_time = glide_max_time
 	glide_reset.wait_time = reset_max_time
 	Global.connect("lymph_picked", self, "on_lymph_picked")
+	Global.connect("puzzle_entered",self,"on_puzzle_entered")
+	Global.connect("puzzle_exited",self,"on_puzzle_exited")
 	center = get_viewport().size/2
 	state = states.IDLE
 	#remove ifs when definitive character is ready.
@@ -106,6 +111,23 @@ func _physics_process(delta: float) -> void:
 	var camera_rotation = camera.get_global_transformation().basis.get_euler().y
 	# Rotate keys around Y by camera rotation
 	direction = direction_keys.rotated(Vector3.UP, camera_rotation).normalized()
+	
+	if in_puzzle and not state == states.MIND:
+		var angle = get_angle_to_puzzle(camera_rotation)
+		var rotation_speed = range_lerp(angle, 3.14, 0, 1, 4)
+		get_node("../Cursor").cursor.speed_scale = rotation_speed
+		var space_state = get_world().direct_space_state
+		var rayOrigin = camera.camera.project_ray_origin(center)
+		var rayEnd = rayOrigin + camera.camera.project_ray_normal(center) * 200
+		var intersection = space_state.intersect_ray(rayOrigin, rayEnd)
+		if not intersection.empty() and intersection.collider.is_in_group("Beetle"):
+			emit_signal("change_cursor","hold_RMB",1)
+			if Input.is_action_just_pressed("mind_connection"):
+				emit_signal("in_mind")
+				emit_signal("change_cursor","connected",1)
+				state=states.MIND
+		else:
+			emit_signal("change_cursor","connection_zone",rotation_speed)
 	
 	if is_on_floor():
 		snap = -get_floor_normal()
@@ -185,9 +207,10 @@ func _physics_process(delta: float) -> void:
 				var rayEnd = rayOrigin + camera.camera.project_ray_normal(center) * 2000
 				var intersection = space_state.intersect_ray(rayOrigin, rayEnd)
 				if intersection.empty():
-					if last_intersection != null:
+					pass
+					"""if last_intersection != null:
 							last_intersection.collider.move(Vector3.ZERO)
-							last_intersection = null
+							last_intersection = null"""
 				elif intersection.collider.is_in_group("Beetle"):
 					last_intersection = intersection
 					emit_signal("move_beetle",intersection.position)
@@ -195,7 +218,11 @@ func _physics_process(delta: float) -> void:
 					if last_intersection != null:
 						emit_signal("move_beetle",Vector3.ZERO)
 						last_intersection = null
-			if Input.is_action_just_released("mind_connection"):
+			else:
+				emit_signal("move_beetle",Vector3.ZERO)
+				emit_signal("out_mind")
+				state=states.IDLE
+			"""if Input.is_action_just_released("mind_connection"):
 				if last_intersection != null:
 					emit_signal("move_beetle",Vector3.ZERO)
 					last_intersection = null
@@ -205,7 +232,7 @@ func _physics_process(delta: float) -> void:
 				if last_intersection != null:
 					last_intersection.collider.move(Vector3.ZERO)
 					last_intersection = null
-				emit_signal("out_mind")
+				emit_signal("out_mind")"""
 			
 		states.JUMP:
 			if is_on_floor():
@@ -255,9 +282,6 @@ func _physics_process(delta: float) -> void:
 		gravity_vector += Vector3.DOWN * gravity * delta
 	
 	
-	#Close game on ESC
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
 	
 	#make it move
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
@@ -296,29 +320,29 @@ func _physics_process(delta: float) -> void:
 #func walk():
 #	$PhilosopherBug/RootNode/AnimationPlayer.play("walk")
 
-func change_state(next_state) -> void:
-	var previous_state = state
-	
-	enter_state(next_state)
-	clean(previous_state)
-
-func enter_state(next_state) -> void:
-	state = next_state
-	match next_state:
-		states.GLIDE:
-			acceleration = acceleration_glide
-			speed = speed_glide
-			gravity = gravity_glide
-			snap = Vector3.DOWN
-			hovering_=true
-			animation_state.travel("Hover_loop")
-
-func clean(previous_state) -> void:
-	match previous_state:
-		states.GLIDE:
-			speed = speed_default
-			gravity = gravity_default
-			hovering_=false
+#func change_state(next_state) -> void:
+#	var previous_state = state
+#
+#	enter_state(next_state)
+#	clean(previous_state)
+#
+#func enter_state(next_state) -> void:
+#	state = next_state
+#	match next_state:
+#		states.GLIDE:
+#			acceleration = acceleration_glide
+#			speed = speed_glide
+#			gravity = gravity_glide
+#			snap = Vector3.DOWN
+#			hovering_=true
+#			animation_state.travel("Hover_loop")
+#
+#func clean(previous_state) -> void:
+#	match previous_state:
+#		states.GLIDE:
+#			speed = speed_default
+#			gravity = gravity_default
+#			hovering_=false
 
 func _on_glide_timer_timeout() -> void:
 	glide_reset.start()
@@ -349,3 +373,22 @@ func _out_of_glide():
 
 	hovering_=false	
 	#animation_state.travel("Moving_loop")
+
+func get_angle_to_puzzle(camera_rotation) -> float:
+	var looking_at = Vector3(0,0,1).rotated(Vector3.UP,camera_rotation)
+	var from_puzzle_to_me = global_transform.origin - puzzle_transform.origin
+	return looking_at.angle_to(from_puzzle_to_me)
+
+
+func on_puzzle_entered(puzzle_transform_new : Transform) -> void:
+	puzzle_transform = puzzle_transform_new
+	in_puzzle = true
+	
+	
+func on_puzzle_exited() -> void:
+	in_puzzle = false
+	
+	
+	
+	
+	
