@@ -109,7 +109,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.258111, 0, -7.00189 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64103, 0, -10.3795 )
 
 [connection signal="in_mind" from="Player" to="Cursor" method="_on_Player_in_mind"]
-[connection signal="move_beetle" from="Player" to="Path/PathFollow/Beetle" method="_on_Player_move_beetle"]
 [connection signal="out_mind" from="Player" to="Cursor" method="_on_Player_out_mind"]
 
 [editable path="Player"]
