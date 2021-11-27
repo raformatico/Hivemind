@@ -10,7 +10,7 @@ export var gravity_glide := 6
 export var jump := 5
 export var mouse_sense := 0.1
 export var joystick_sense := 1
-export var speed_default := 7
+export var speed_default := 4
 export var speed_glide := 12
 export var gliding_factor := 2
 
@@ -122,6 +122,7 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("mind_connection"):
 				emit_signal("in_mind")
 				emit_signal("change_cursor","connected",1)
+				animation_state.travel("Connect_loop")
 				state=states.MIND
 		else:
 			emit_signal("change_cursor","connection_zone",rotation_speed)
@@ -219,6 +220,7 @@ func _physics_process(delta: float) -> void:
 				emit_signal("move_puzzle",Vector3.ZERO)
 				emit_signal("out_mind")
 				state=states.IDLE
+				animation_state.travel("idle_loop")
 			"""if Input.is_action_just_released("mind_connection"):
 				if last_intersection != null:
 					emit_signal("move_puzzle",Vector3.ZERO)

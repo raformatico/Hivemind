@@ -21,30 +21,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 1577.0
+margin_top = 713.0
+margin_right = 1650.0
+margin_bottom = 803.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
-margin_left = 926.0
-margin_top = 495.0
-margin_right = 994.0
-margin_bottom = 585.0
-custom_constants/vseparation = 20
-
-[node name="Button" type="Button" parent="CenterContainer/GridContainer"]
-margin_right = 68.0
-margin_bottom = 35.0
-text = "Resume"
-
-[node name="Button2" type="Button" parent="CenterContainer/GridContainer"]
-margin_top = 55.0
-margin_right = 68.0
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+margin_right = 114.0
 margin_bottom = 90.0
-text = "Quit"
+custom_constants/vseparation = 20
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[connection signal="pressed" from="CenterContainer/GridContainer/Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="CenterContainer/GridContainer/Button2" to="." method="_on_Button2_pressed"]
+[node name="Continue" type="Button" parent="MarginContainer/GridContainer"]
+margin_right = 73.0
+margin_bottom = 35.0
+text = "Continue"
+
+[node name="Exit" type="Button" parent="MarginContainer/GridContainer"]
+margin_left = 77.0
+margin_right = 114.0
+margin_bottom = 35.0
+text = "Exit"
+
+[connection signal="pressed" from="MarginContainer/GridContainer/Continue" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="MarginContainer/GridContainer/Exit" to="." method="_on_Button2_pressed"]

@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Hivemind"
-run/main_scene="res://World/WorldBugatti-jjramos.tscn"
+run/main_scene="res://Menu/Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

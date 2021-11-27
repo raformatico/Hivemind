@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Player/bugatti/PlayerBugatti.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Obstacle.tscn" type="PackedScene" id=2]
-[ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Menu/Pause.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Cursor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Characters/puzzle_area.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Characters/GIANT BEETLE/GIANT_BEETLE.tscn" type="PackedScene" id=6]
@@ -28,6 +28,7 @@ extents = Vector3( 50, 0.1, 50 )
 [node name="debug_label" parent="." instance=ExtResource( 9 )]
 
 [node name="HowTo" type="Label" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 179.0
@@ -58,12 +59,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5882, 0, -31.5406 )
 [node name="puzzle_area" parent="GIANT_BEETLE" instance=ExtResource( 5 )]
 
 [node name="UI" parent="." instance=ExtResource( 7 )]
-visible = false
 
 [node name="Cursor" parent="." instance=ExtResource( 4 )]
-visible = false
 
-[node name="PauseMenu" parent="." instance=ExtResource( 3 )]
+[node name="Pause" parent="." instance=ExtResource( 3 )]
 visible = false
 
 [node name="Player" parent="." instance=ExtResource( 1 )]

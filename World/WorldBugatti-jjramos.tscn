@@ -58,6 +58,9 @@ transform = Transform( -0.775507, 0.102603, -0.622946, 0, 0.986706, 0.162517, 0.
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.4017, -4.5, -13.1213 )
 visible = false
 
+[node name="PathFollow" parent="BeetlePath" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.07795 )
+
 [node name="GIANT_BEETLE" parent="." index="2" instance=ExtResource( 7 )]
 transform = Transform( -0.00602138, 0, 0.999982, 0, 1, 0, -0.999982, 0, -0.00602138, -2.75928, -4.43219, -16.2088 )
 
@@ -163,8 +166,6 @@ radius = 3.62917
 
 [node name="Strikerfly" parent="." index="61" instance=ExtResource( 9 )]
 transform = Transform( -1.9363, -0.144404, -0.479457, -0.303674, 1.86131, 0.665803, 0.398137, 0.717398, -1.82396, 42.795, 22.5065, -17.7766 )
-
-[connection signal="move_beetle" from="Player" to="BeetlePath/PathFollow/GIANT_BEETLE" method="_on_Player_move_beetle"]
 
 [editable path="BeetlePath"]
 [editable path="Player"]

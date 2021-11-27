@@ -1,0 +1,132 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Menu/start_menu_background.jpg" type="Texture" id=1]
+[ext_resource path="res://Menu/selector.png" type="Texture" id=2]
+[ext_resource path="res://Menu/Menu.gd" type="Script" id=3]
+[ext_resource path="res://Menu/keymap.jpg" type="Texture" id=4]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundKeys" type="TextureRect" parent="."]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectorPlay" type="TextureRect" parent="."]
+visible = false
+margin_left = 1092.0
+margin_top = 686.0
+margin_right = 1158.0
+margin_bottom = 752.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectorOptions" type="TextureRect" parent="."]
+visible = false
+margin_left = 1092.0
+margin_top = 735.0
+margin_right = 1158.0
+margin_bottom = 801.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectorExit" type="TextureRect" parent="."]
+visible = false
+margin_left = 1092.0
+margin_top = 786.0
+margin_right = 1158.0
+margin_bottom = 852.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 1103.0
+margin_top = 691.0
+margin_right = 1334.0
+margin_bottom = 739.0
+focus_neighbour_top = NodePath("../Exit")
+focus_neighbour_bottom = NodePath("../Options")
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 1103.0
+margin_top = 744.0
+margin_right = 1334.0
+margin_bottom = 792.0
+focus_neighbour_top = NodePath("../Play")
+focus_neighbour_bottom = NodePath("../Exit")
+
+[node name="Exit" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 1103.0
+margin_top = 796.0
+margin_right = 1334.0
+margin_bottom = 844.0
+focus_neighbour_top = NodePath("../Options")
+focus_neighbour_bottom = NodePath("../Play")
+
+[node name="SelectorBack" type="TextureRect" parent="."]
+visible = false
+margin_left = 77.0
+margin_top = 818.0
+margin_right = 143.0
+margin_bottom = 884.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 128.0
+margin_top = 798.0
+margin_right = 309.0
+margin_bottom = 912.0
+focus_neighbour_top = NodePath("../Exit")
+focus_neighbour_bottom = NodePath("../Options")
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="focus_entered" from="Play" to="." method="_on_Play_focus_entered"]
+[connection signal="focus_exited" from="Play" to="." method="_on_Play_focus_exited"]
+[connection signal="mouse_entered" from="Play" to="." method="_on_Play_mouse_entered"]
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
+[connection signal="focus_entered" from="Options" to="." method="_on_Options_focus_entered"]
+[connection signal="focus_exited" from="Options" to="." method="_on_Options_focus_exited"]
+[connection signal="mouse_entered" from="Options" to="." method="_on_Options_mouse_entered"]
+[connection signal="pressed" from="Options" to="." method="_on_Options_pressed"]
+[connection signal="focus_entered" from="Exit" to="." method="_on_Exit_focus_entered"]
+[connection signal="focus_exited" from="Exit" to="." method="_on_Exit_focus_exited"]
+[connection signal="mouse_entered" from="Exit" to="." method="_on_Exit_mouse_entered"]
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
