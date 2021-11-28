@@ -1,15 +1,68 @@
-[gd_resource type="AudioBusLayout" format=2]
+[gd_resource type="AudioBusLayout" load_steps=5 format=2]
+
+[sub_resource type="AudioEffectBandPassFilter" id=4]
+resource_name = "BandPassFilter"
+cutoff_hz = 500.0
+resonance = 0.8
+db = 2
+
+[sub_resource type="AudioEffectPitchShift" id=1]
+resource_name = "PitchShift"
+
+[sub_resource type="AudioEffectPitchShift" id=2]
+resource_name = "PitchShift"
+
+[sub_resource type="AudioEffectPitchShift" id=3]
+resource_name = "PitchShift"
 
 [resource]
-bus/1/name = "music_1"
+bus/1/name = "mixmusic"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = 0.65609
+bus/1/volume_db = 0.0
 bus/1/send = "Master"
-bus/2/name = "music_2"
+bus/1/effect/0/effect = SubResource( 4 )
+bus/1/effect/0/enabled = false
+bus/2/name = "music"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = 0.0
-bus/2/send = "Master"
+bus/2/volume_db = 0.65609
+bus/2/send = "mixmusic"
+bus/3/name = "wind"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = "mixmusic"
+bus/4/name = "sfx"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = "Master"
+bus/5/name = "worms1"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 0.0
+bus/5/send = "Master"
+bus/5/effect/0/effect = SubResource( 1 )
+bus/5/effect/0/enabled = true
+bus/6/name = "worms2"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = 0.0
+bus/6/send = "Master"
+bus/6/effect/0/effect = SubResource( 2 )
+bus/6/effect/0/enabled = true
+bus/7/name = "worms3"
+bus/7/solo = false
+bus/7/mute = false
+bus/7/bypass_fx = false
+bus/7/volume_db = 0.0
+bus/7/send = "Master"
+bus/7/effect/0/effect = SubResource( 3 )
+bus/7/effect/0/enabled = true

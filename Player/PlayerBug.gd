@@ -200,6 +200,8 @@ func _physics_process(delta: float) -> void:
 			direction = Vector3.ZERO
 								
 			if Input.is_action_pressed("mind_connection"): # and state == states.MIND:
+				AudioEngine.play_sfx("concentracion")
+				AudioEngine.eq_music()
 				var space_state = get_world().direct_space_state
 				var rayOrigin = camera.camera.project_ray_origin(center)
 				var rayEnd = rayOrigin + camera.camera.project_ray_normal(center) * 2000
@@ -217,6 +219,8 @@ func _physics_process(delta: float) -> void:
 						emit_signal("move_puzzle",Vector3.ZERO)
 						last_intersection = null
 			else:
+				AudioEngine.stop_sfx()
+				AudioEngine.uneq_music()
 				emit_signal("move_puzzle",Vector3.ZERO)
 				emit_signal("out_mind")
 				state=states.IDLE
