@@ -1279,7 +1279,6 @@ shape = SubResource( 11 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 28 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource( 29 )
 parameters/BlendTree/Blend2/blend_amount = 0.49
 "parameters/BlendTree 2/Blend2/blend_amount" = 0.5

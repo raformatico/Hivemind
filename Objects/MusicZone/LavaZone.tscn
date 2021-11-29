@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://World/zones/LarvaeZone.gd" type="Script" id=1]
+
+[sub_resource type="SphereShape" id=177]
+radius = 32.5209
+
+[node name="LarvaeZone" type="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9655, 0, 22.6002 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.329716, 0, 0 )
+shape = SubResource( 177 )
+
+[connection signal="body_entered" from="." to="." method="_on_LarvaeZone_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_LarvaeZone_body_exited"]
