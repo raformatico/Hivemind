@@ -1,0 +1,20 @@
+[gd_resource type="SpatialMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://1_Textures/normals_ground2.jpg" type="Texture" id=1]
+[ext_resource path="res://1_Textures/dif_ground3.jpg" type="Texture" id=2]
+[ext_resource path="res://1_Textures/Tiles_rough.jpg" type="Texture" id=3]
+
+[resource]
+albedo_color = Color( 0.27451, 0.423529, 0.317647, 1 )
+albedo_texture = ExtResource( 2 )
+metallic_specular = 0.64
+roughness = 0.89
+roughness_texture = ExtResource( 3 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 1 )
+ao_enabled = true
+ao_light_affect = 0.71
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 2.343, 2.057, 1 )

@@ -20,7 +20,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.74
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 
 [node name="Camera" parent="Camera/CameraIn" index="0"]
-far = 165.0
+far = 740.8
 
 [node name="glide_timer" type="Timer" parent="." index="4"]
 wait_time = 10.0

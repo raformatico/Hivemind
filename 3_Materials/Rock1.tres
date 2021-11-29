@@ -1,0 +1,21 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[ext_resource path="res://1_Textures/Tiles_diffuse.jpg" type="Texture" id=1]
+[ext_resource path="res://1_Textures/Tiles_normals.jpg" type="Texture" id=2]
+[ext_resource path="res://1_Textures/Tiles_rough.jpg" type="Texture" id=3]
+[ext_resource path="res://1_Textures/Tiles_aoo.jpg" type="Texture" id=4]
+
+[resource]
+albedo_texture = ExtResource( 1 )
+metallic_specular = 0.64
+roughness = 0.89
+roughness_texture = ExtResource( 3 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 2 )
+ao_enabled = true
+ao_light_affect = 0.71
+ao_texture = ExtResource( 4 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 12.545, 5.056, 1 )
