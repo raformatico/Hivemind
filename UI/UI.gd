@@ -59,3 +59,5 @@ func _on_Player_glide_restarted(reset_time) -> void:
 func _on_stamina_tween_drain_tween_completed(object: Object, key: NodePath) -> void:
 	if stamina.value == 100:
 		_hide_stamina()
+
+
