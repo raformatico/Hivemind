@@ -1,7 +1,7 @@
 extends Control
 
-onready var lymph : AnimatedSprite = $VBoxContainer/up_container/lymph
-onready var stamina : TextureProgress = $VBoxContainer/bot_container/stamina
+onready var lymph : AnimatedSprite = $MarginContainer/VBoxContainer/up_container/lymph
+onready var stamina : TextureProgress = $MarginContainer/VBoxContainer/bot_container/stamina
 onready var tween : Tween = $stamina_tween
 onready var tween_drain : Tween = $stamina_tween_drain
 onready var tween_fade : Tween = $stamina_fade
