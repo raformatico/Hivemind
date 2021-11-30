@@ -3,12 +3,11 @@ extends Node
 var audio_dict = {}
 
 #List of our songs and path to them
-const songs = ["paisaje", "laguna", "cucas", "larvas", "wind"]
-const sfxs = ["concentracion", "victory"]
+const songs = ["paisaje", "laguna", "escarabajo", "larvas", "wind"]
+const sfxs = ["concentracion", "victory", "walk", "run", "buzz"]
+const sfx_loop_data = {"concentracion":1.715, "victory":0.0, "walk":0.253, "run":0.284, "buzz":0.265}
 const music_path = "res://Audio/music/"
 const sfx_path = "res://Audio/sfx/"
-
-const sfx_loop_data = {"concentracion":10}
 
 #Shortcut for one of our players
 const PL_1 = 0
@@ -71,7 +70,8 @@ func _ready():
 	#Laod all SFX in memory!
 	path_to_piece = sfx_path + "{sfx}.wav" 
 	for effect in sfxs:
-		sfxlist[effect] = (load(path_to_piece.format({"sfx":effect}))) 
+		sfxlist[effect] = (load(path_to_piece.format({"sfx":effect})))
+		sfxlist[effect].set_loop_begin(44100*sfx_loop_data[effect])
 	
 	#Set up little worm sings
 	var j = 1
@@ -112,11 +112,10 @@ func play_song(song:String):
 	music[PL_1].volume_db = 0.0
 	music[PL_1].play()
 
+#Play a new SFX effect
 func play_sfx(sfxname:String):
 	if not sfx.playing:
 		sfx.stream = sfxlist[sfxname]
-		print(sfx.stream.data.size())
-		sfx.stream.loop_begin = sfx_loop_data[sfxname]
 		sfx.play()
 
 func stop_sfx():

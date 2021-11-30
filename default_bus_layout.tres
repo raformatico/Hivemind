@@ -1,18 +1,18 @@
 [gd_resource type="AudioBusLayout" load_steps=5 format=2]
 
-[sub_resource type="AudioEffectBandPassFilter" id=4]
+[sub_resource type="AudioEffectBandPassFilter" id=1]
 resource_name = "BandPassFilter"
 cutoff_hz = 500.0
 resonance = 0.8
 db = 2
 
-[sub_resource type="AudioEffectPitchShift" id=1]
-resource_name = "PitchShift"
-
 [sub_resource type="AudioEffectPitchShift" id=2]
 resource_name = "PitchShift"
 
 [sub_resource type="AudioEffectPitchShift" id=3]
+resource_name = "PitchShift"
+
+[sub_resource type="AudioEffectPitchShift" id=4]
 resource_name = "PitchShift"
 
 [resource]
@@ -22,7 +22,7 @@ bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = 0.0
 bus/1/send = "Master"
-bus/1/effect/0/effect = SubResource( 4 )
+bus/1/effect/0/effect = SubResource( 1 )
 bus/1/effect/0/enabled = false
 bus/2/name = "music"
 bus/2/solo = false
@@ -48,7 +48,7 @@ bus/5/mute = false
 bus/5/bypass_fx = false
 bus/5/volume_db = 0.0
 bus/5/send = "Master"
-bus/5/effect/0/effect = SubResource( 1 )
+bus/5/effect/0/effect = SubResource( 2 )
 bus/5/effect/0/enabled = true
 bus/6/name = "worms2"
 bus/6/solo = false
@@ -56,7 +56,7 @@ bus/6/mute = false
 bus/6/bypass_fx = false
 bus/6/volume_db = 0.0
 bus/6/send = "Master"
-bus/6/effect/0/effect = SubResource( 2 )
+bus/6/effect/0/effect = SubResource( 3 )
 bus/6/effect/0/enabled = true
 bus/7/name = "worms3"
 bus/7/solo = false
@@ -64,5 +64,5 @@ bus/7/mute = false
 bus/7/bypass_fx = false
 bus/7/volume_db = 0.0
 bus/7/send = "Master"
-bus/7/effect/0/effect = SubResource( 3 )
+bus/7/effect/0/effect = SubResource( 4 )
 bus/7/effect/0/enabled = true
