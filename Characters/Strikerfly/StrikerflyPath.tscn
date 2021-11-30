@@ -6,8 +6,8 @@
 
 [sub_resource type="Curve3D" id=1]
 _data = {
-"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 0, -3.09983, -8.4323, 0, 0, 0, 0, 0, 0, 0, 2.7816, 14.3239 ),
-"tilts": PoolRealArray( 0, 0 )
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 0, -3.09983, -8.4323, 0, 0, 0, 0, 0, 0, 2.17271, 5.5398, 10.6788, 0, 0, 0, 0, 0, 0, 3.03894, -3.70447, 21.1584, 0, 0, 0, 0, 0, 0, 10.2396, -3.1548, 23.0922 ),
+"tilts": PoolRealArray( 0, 0, 0, 0 )
 }
 
 [node name="StrikerflyPath" type="Path"]
@@ -15,8 +15,9 @@ curve = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="PathFollow" type="PathFollow" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.408322, 5.1413 )
-offset = 14.05
+transform = Transform( 0.171393, -0.219462, 0.960444, 0.640133, 0.765857, 0.0607654, -0.748902, 0.6044, 0.271746, 3.06757, -3.70052, 21.1641 )
+offset = 35.0442
+rotation_mode = 4
 
 [node name="Strikerfly" parent="PathFollow" instance=ExtResource( 1 )]
 
