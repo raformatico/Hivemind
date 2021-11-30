@@ -410,8 +410,11 @@ func on_puzzle_exited() -> void:
 	puzzle_parent = null
 	
 func move_player_to_lake()-> void:
-	transform.origin = Vector3(90,0,-70)
-	#rotation_degrees(Vector3(0,-85,0))
+	transform = get_node("../RespawnLakepoint").global_transform
+	#get_node("../RespawnLakepoint").global_transform.basis.get_euler()
+	#transform.origin = Vector3(88,0,-70)
+	#transform.basis.rotated(Vector3(0,1,0),deg2rad(-85))#rotation_degrees(Vector3(0,-85,0))
 	
-	
-	
+
+func _on_fade_in_tween_all_completed() -> void:
+	move_player_to_lake()

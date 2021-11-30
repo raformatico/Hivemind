@@ -41,7 +41,7 @@ func _on_VideoPlayer_finished():
 #		print(event.as_text())
 		
 func _unhandled_input(event):
-	if Input.is_action_just_pressed("pause") or Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("skip"):
 		_on_VideoPlayer_finished()
 #
 #	if event is InputEventKey:
