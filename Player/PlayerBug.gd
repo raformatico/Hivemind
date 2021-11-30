@@ -100,7 +100,8 @@ func _process(delta: float) -> void:
 	# Rotate body to point to the movement
 	if direction != Vector3.ZERO:
 		body.rotation.y = lerp_angle(body.rotation.y, atan2(-direction.x, -direction.z), angular_velocity * delta)
-
+	
+	
 func _physics_process(delta: float) -> void:
 	# gravity = Vector3.DOWN # undefined?
 	
@@ -411,6 +412,8 @@ func on_puzzle_exited() -> void:
 	
 func move_player_to_lake()-> void:
 	transform = get_node("../RespawnLakepoint").global_transform
+	camera.rotation_degrees = Vector3(0,-70,0)
+	body.rotation.y = camera.get_global_transformation().basis.get_euler().y
 	#get_node("../RespawnLakepoint").global_transform.basis.get_euler()
 	#transform.origin = Vector3(88,0,-70)
 	#transform.basis.rotated(Vector3(0,1,0),deg2rad(-85))#rotation_degrees(Vector3(0,-85,0))
