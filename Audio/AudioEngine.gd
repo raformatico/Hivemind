@@ -4,14 +4,17 @@ var audio_dict = {}
 
 #List of our songs and path to them
 const songs = ["paisaje", "laguna", "escarabajo", "larvas", "wind"]
-const sfxs = ["concentracion", "victory", "walk", "run", "buzz"]
-const sfx_loop_data = {"concentracion":1.715, "victory":0.0, "walk":0.253, "run":0.284, "buzz":0.265}
+const sfxs = ["concentracion", "victory", "step1", "step2", "step3", "step4", "buzz"] #0.253
+const sfx_loop_data = {"concentracion":1.715, "victory":0.0, "step1":0.0, "step2":0.0, "step3":0.0, "step4":0.0, "buzz":0.265}
 const music_path = "res://Audio/music/"
 const sfx_path = "res://Audio/sfx/"
 
 #Shortcut for one of our players
 const PL_1 = 0
 const PL_2 = 1
+
+#Steps for the player
+var current_step
 
 #-70dB cannot be heard by any means
 var silence_volume = -70
@@ -83,12 +86,13 @@ func _ready():
 		j += 1
 	
 	#Time to start playing a song
-	play_song(cur_song)
+	#play_song(cur_song)
+	current_step = 0
 	
 	#Wind effect is played perpetually...
 	wind.stream = songlist["wind"]
 	wind.volume_db = -1.0
-	wind.play()
+	#wind.play()
 	set_process(false)
 
 
@@ -112,13 +116,22 @@ func play_song(song:String):
 	music[PL_1].volume_db = 0.0
 	music[PL_1].play()
 
+#For walk/running SFXs
+func walk_step():
+	current_step = (current_step+1)%4
+	play_sfx("step"+str(current_step))
+
 #Play a new SFX effect
 func play_sfx(sfxname:String):
 	if not sfx.playing:
+		print("start")
+		#sfx.volume_db = 0.0
 		sfx.stream = sfxlist[sfxname]
 		sfx.play()
 
 func stop_sfx():
+	print("stop")
+	#sfx.volume_db = silence_volume
 	sfx.stop()
 
 func eq_music():
