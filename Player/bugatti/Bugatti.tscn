@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Player/Bugatti V1/Material_001.material" type="Material" id=1]
 [ext_resource path="res://Player/Bugatti V1/BUGATTI_ACTIONS_V1.glb" type="PackedScene" id=2]
@@ -65,7 +65,13 @@ xfade_time = 0.1
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
 xfade_time = 0.3
 
-[sub_resource type="AnimationNodeStateMachine" id=19]
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachine" id=21]
 states/Connect_loop/node = SubResource( 1 )
 states/Connect_loop/position = Vector2( -55, 158 )
 states/Hover_loop/node = SubResource( 2 )
@@ -76,11 +82,11 @@ states/Jump/node = SubResource( 4 )
 states/Jump/position = Vector2( 120, 169 )
 states/Moving_loop/node = SubResource( 8 )
 states/Moving_loop/position = Vector2( 302, 30 )
-transitions = [ "Idle_loop", "Moving_loop", SubResource( 9 ), "Moving_loop", "Idle_loop", SubResource( 10 ), "Idle_loop", "Connect_loop", SubResource( 11 ), "Connect_loop", "Idle_loop", SubResource( 12 ), "Moving_loop", "Hover_loop", SubResource( 13 ), "Hover_loop", "Moving_loop", SubResource( 14 ), "Moving_loop", "Jump", SubResource( 15 ), "Jump", "Moving_loop", SubResource( 16 ), "Idle_loop", "Jump", SubResource( 17 ), "Idle_loop", "Hover_loop", SubResource( 18 ) ]
+transitions = [ "Idle_loop", "Moving_loop", SubResource( 9 ), "Moving_loop", "Idle_loop", SubResource( 10 ), "Idle_loop", "Connect_loop", SubResource( 11 ), "Connect_loop", "Idle_loop", SubResource( 12 ), "Moving_loop", "Hover_loop", SubResource( 13 ), "Hover_loop", "Moving_loop", SubResource( 14 ), "Moving_loop", "Jump", SubResource( 15 ), "Jump", "Moving_loop", SubResource( 16 ), "Idle_loop", "Jump", SubResource( 17 ), "Idle_loop", "Hover_loop", SubResource( 18 ), "Jump", "Hover_loop", SubResource( 19 ), "Hover_loop", "Idle_loop", SubResource( 20 ) ]
 start_node = "Idle_loop"
-graph_offset = Vector2( -290.786, -193.78 )
+graph_offset = Vector2( -290.786, -86.04 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=20]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=22]
 
 [node name="BUGATTI_ACTIONS_V1" instance=ExtResource( 2 )]
 script = ExtResource( 3 )
@@ -92,8 +98,8 @@ material/0 = ExtResource( 1 )
 autoplay = "Idle·loop"
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
-tree_root = SubResource( 19 )
+tree_root = SubResource( 21 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 20 )
+parameters/playback = SubResource( 22 )
 parameters/Moving_loop/blend_position = 4.19357

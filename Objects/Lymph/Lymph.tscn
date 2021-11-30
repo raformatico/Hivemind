@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Objects/Lymph/Lymph.gd" type="Script" id=1]
+[ext_resource path="res://3_Materials/Lymph.tres" type="Material" id=2]
 
 [sub_resource type="SphereShape" id=1]
 
 [sub_resource type="SphereMesh" id=2]
+
+[sub_resource type="SphereMesh" id=3]
+radius = 0.2
+height = 0.4
 
 [node name="Lymph" type="Area"]
 script = ExtResource( 1 )
@@ -13,7 +18,12 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+visible = false
 mesh = SubResource( 2 )
 material/0 = null
+
+[node name="Lymph_3" type="MeshInstance" parent="."]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
 
 [connection signal="body_entered" from="." to="." method="_on_Lymph_body_entered"]
