@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Characters/LYMPHOLDER/LYMPHOLDER.gd" type="Script" id=1]
 [ext_resource path="res://Characters/LYMPHOLDER/Material.material" type="Material" id=2]
@@ -156,6 +156,18 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = PoolRealArray( 0, 1, 0, 0, 0, -3.55271e-15, 0, 0, 1, 1, 1, 1, 2, 1, 0, 0, 0, -3.55271e-15, 0, 0, 1, 1, 1, 1 )
+tracks/13/type = "value"
+tracks/13/path = NodePath("CollisionShape:translation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.496368, 0 ), Vector3( 0, 0.496368, 0 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "Lympholder"
@@ -252,6 +264,21 @@ tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = PoolRealArray( 0, 1, 0, 0, 0, -3.55271e-15, 0, 0, 1, 1, 1, 1 )
 
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.496368, 0 ) ]
+}
+
 [sub_resource type="Animation" id=5]
 resource_name = "openaction"
 length = 6.66667
@@ -346,6 +373,18 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = PoolRealArray( 0, 1, 0, 0, 0, -3.55271e-15, 0, 0, 1, 1, 1, 1, 6.66667, 1, 0, 0, 0, -3.55271e-15, 0, 0, 1, 1, 1, 1 )
+tracks/13/type = "value"
+tracks/13/path = NodePath("CollisionShape:translation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 2.8, 6.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.496368, 0 ), Vector3( 0, 0.496368, 0 ), Vector3( 0, -0.302913, 0 ) ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "opened_pose"
@@ -441,9 +480,21 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = PoolRealArray( 0, 1, 0, 0, 0, -3.55271e-15, 0, 0, 1, 1, 1, 1 )
+tracks/13/type = "value"
+tracks/13/path = NodePath("CollisionShape:translation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, -0.302913, 0 ) ]
+}
 
 [sub_resource type="SphereShape" id=7]
-radius = 0.667117
+radius = 0.666601
 
 [sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Idle·loop"
@@ -558,6 +609,7 @@ material/0 = ExtResource( 2 )
 autoplay = "Idle·loop"
 "anims/Idle·loop" = SubResource( 3 )
 anims/Lympholder = SubResource( 4 )
+anims/RESET = SubResource( 17 )
 anims/openaction = SubResource( 5 )
 anims/opened_pose = SubResource( 6 )
 

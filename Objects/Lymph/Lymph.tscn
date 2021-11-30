@@ -4,6 +4,7 @@
 [ext_resource path="res://3_Materials/Lymph.tres" type="Material" id=2]
 
 [sub_resource type="SphereShape" id=1]
+radius = 0.262519
 
 [sub_resource type="SphereMesh" id=2]
 
