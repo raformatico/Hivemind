@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Characters/LYMPHOLDER/LYMPHOLDER.gd" type="Script" id=1]
 [ext_resource path="res://Characters/LYMPHOLDER/Material.material" type="Material" id=2]
@@ -471,6 +471,9 @@ end_node = "opened_pose"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=14]
 
+[sub_resource type="SphereShape" id=15]
+radius = 3.0
+
 [node name="LYMPHOLDER" type="KinematicBody"]
 script = ExtResource( 1 )
 
@@ -564,3 +567,10 @@ tree_root = SubResource( 13 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 14 )
+
+[node name="PlayerDetector" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerDetector"]
+shape = SubResource( 15 )
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]

@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _on_Play_pressed() -> void:
 	AudioEngine.fade_out(1.0)
-	get_tree().change_scene("res://World/full_scenario/HIVEMIND WORLD_03.tscn")
+	get_tree().change_scene("res://Menu/VideoPlayer.tscn")
 
 
 func _on_Exit_pressed() -> void:

@@ -1,18 +1,13 @@
 extends KinematicBody
 
+export var openNearPlayer : bool = false
+onready var animationTree : AnimationTree = $AnimationTree
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play("idle")
 	$AnimationPlayer.seek(randf()*$AnimationPlayer.current_animation_length)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+func _on_PlayerDetector_body_entered(body: Node) -> void:
+	if body is Player and openNearPlayer:
+		print("OPEN")
