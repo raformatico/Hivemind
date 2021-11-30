@@ -28,9 +28,9 @@ animation = "Walk·loop"
 blend_point_0/node = SubResource( 5 )
 blend_point_0/pos = 0.0
 blend_point_1/node = SubResource( 7 )
-blend_point_1/pos = 5.9
+blend_point_1/pos = 4.0
 blend_point_2/node = SubResource( 21 )
-blend_point_2/pos = 4.2
+blend_point_2/pos = 1.0
 max_space = 12.0
 value_label = "Speed"
 
@@ -94,4 +94,4 @@ tree_root = SubResource( 17 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 18 )
-parameters/Moving_loop/blend_position = -0.00827914
+parameters/Moving_loop/blend_position = 4.19357

@@ -64,7 +64,10 @@ func _on_Player_move_puzzle(position_local) -> void:
 	if player_in_area:
 		if position_local == Vector3.ZERO:
 			direction = Vector2.ZERO
+			$AnimationPlayer.play("Idle·loop",1)
 		else:
+			
+			$AnimationPlayer.play("Walk·loop",1)
 			position = Vector2(global_transform.origin.x, global_transform.origin.z)
 			intersection_position = Vector2(position_local.x, position_local.z)
 			var direction_intersection = (position_local - global_transform.origin)

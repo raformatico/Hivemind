@@ -15,7 +15,7 @@ curve = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="PathFollow" type="PathFollow" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40832, 5.14129 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.408322, 5.1413 )
 offset = 14.05
 
 [node name="Strikerfly" parent="PathFollow" instance=ExtResource( 1 )]
