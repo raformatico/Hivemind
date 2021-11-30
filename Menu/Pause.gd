@@ -15,6 +15,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if visible:
 			hide_me()
+		elif background_keys.visible:
+			$BackgroundKeys.visible = false
+			hide_back_button()
+			show_buttons()
 		else:
 			show_me()
 
