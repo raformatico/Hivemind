@@ -88,13 +88,13 @@ shape = SubResource( 2 )
 transform = Transform( 0.258364, 0, 0.966048, 0, 1, 0, -0.966048, 0, 0.258364, 28.5259, 0, -29.9176 )
 
 [node name="PathFollow" parent="BeetlePath" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.298556, 0, 18.8764 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.07795 )
 
 [node name="BeetlePath2" parent="." instance=ExtResource( 8 )]
 transform = Transform( 0.777925, 0, 0.628357, 0, 1, 0, -0.628357, 0, 0.777925, 15.3928, 0, -1.01763 )
 
 [node name="PathFollow" parent="BeetlePath2" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.298556, 0, 18.8764 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.07795 )
 
 [node name="Path" parent="." instance=ExtResource( 10 )]
 transform = Transform( 0.649275, 0, -0.760553, 0, 1, 0, 0.760553, 0, 0.649275, -6.14677, 0, -16.3728 )
