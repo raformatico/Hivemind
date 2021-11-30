@@ -10,7 +10,8 @@ export var gravity_glide := 6
 export var jump := 5
 export var mouse_sense := 0.1
 export var joystick_sense := 1
-export var speed_default := 1	
+export var speed_default := 1
+export var speed_thr_default := 0.05
 export var speed_run := 4
 export var speed_glide := 12
 export var gliding_factor := 2
@@ -36,11 +37,13 @@ export var glide_max_time : float = 10
 export var reset_max_time : float = 3
 onready var acceleration := acceleration_floor
 onready var speed := speed_default
+onready var speed_thr := speed_thr_default
 onready var gravity := gravity_default
 onready var body :=  $Body
 onready var camera := $Camera
 onready var glide_timer := $glide_timer
 onready var glide_reset := $glide_reset
+
 
 var puzzle_parent = null
 var puzzle_transform : Transform = Transform(Vector3.ZERO,Vector3.ZERO,Vector3.ZERO,Vector3.ZERO)
@@ -155,7 +158,7 @@ func _physics_process(delta: float) -> void:
 				gravity_vector = Vector3.UP * jump
 				state=states.JUMP
 				animation_state.travel("Jump")							
-			elif velocity_.length() >0:
+			elif velocity_.length_squared() > speed_thr:
 				state=states.WALK
 			
 		states.GLIDE:
@@ -188,7 +191,7 @@ func _physics_process(delta: float) -> void:
 				# var state_machine = characterAnimationTree["parameters/playback"]
 				#print(velocity_.length())
 				if glide_timer.is_stopped() and is_on_floor():
-					if velocity_.length()>0:
+					if velocity_.length_squared() > speed_thr:
 						state_machine.travel("Moving_loop")
 						characterAnimationTree.set("parameters/Moving_loop/blend_position",velocity_.length())	
 						
@@ -197,6 +200,7 @@ func _physics_process(delta: float) -> void:
 					else:
 						# state_machine.travel("Idle-loop")
 						#print("Loop")
+						velocity = Vector3.ZERO
 						state=states.IDLE
 						state_machine.travel("Idle_loop")
 		states.MIND:
@@ -253,6 +257,7 @@ func _physics_process(delta: float) -> void:
 				animation_state.travel("Hover_loop")
 				_on_glide()						
 		states.WALK:
+			#AudioEngine.play_sfx("walk")
 			speed = speed_default
 			if Input.is_action_just_pressed("jump") and is_on_floor() and glide_timer.is_stopped():
 				snap = Vector3.ZERO
@@ -270,12 +275,12 @@ func _physics_process(delta: float) -> void:
 			else:
 				#print(velocity_.length())
 				if glide_timer.is_stopped() and is_on_floor():
-					if velocity_.length()>0:
+					if velocity_.length_squared() > speed_thr_default:
 						if Input.is_action_pressed("run"):
 							speed=speed_run
 						else:
 							speed=speed_default
-	
+
 						state_machine.travel("Moving_loop")
 						characterAnimationTree.set("parameters/Moving_loop/blend_position",velocity_.length())	
 						
@@ -285,6 +290,7 @@ func _physics_process(delta: float) -> void:
 					else:
 						# state_machine.travel("Idle-loop")
 						#print("Loop")
+						AudioEngine.stop_sfx()
 						state=states.IDLE
 						state_machine.travel("Idle_loop")
 					pass
@@ -307,6 +313,7 @@ func _physics_process(delta: float) -> void:
 	
 	#make it move
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
+	
 	# TODO use friction to stop the player from moving
 	# if direction == Vector3.ZERO:
 	# velocity = velocity.linear_interpolate(direction * speed, friction * delta)
@@ -421,3 +428,5 @@ func move_player_to_lake()-> void:
 
 func _on_fade_in_tween_all_completed() -> void:
 	move_player_to_lake()
+
+
