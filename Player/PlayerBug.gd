@@ -409,7 +409,9 @@ func on_puzzle_entered(puzzle_transform_new : Transform, parent) -> void:
 func on_puzzle_exited() -> void:
 	puzzle_parent = null
 	
-	
+func move_player_to_lake()-> void:
+	transform.origin = Vector3(90,0,-70)
+	#rotation_degrees(Vector3(0,-85,0))
 	
 	
 	

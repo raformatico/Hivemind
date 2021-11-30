@@ -18,4 +18,4 @@ func _ready() -> void:
 
 func _on_EndPooball_body_entered(body: Node) -> void:
 	if body.is_in_group("Poo"):
-		body.mode = "MODE_STATIC"
+		body.mode = body.MODE_STATIC
