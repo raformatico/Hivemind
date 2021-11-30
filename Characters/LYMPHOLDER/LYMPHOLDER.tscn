@@ -455,8 +455,11 @@ animation = "openaction"
 animation = "opened_pose"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=11]
+xfade_time = 1.0
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+xfade_time = 1.0
 
 [sub_resource type="AnimationNodeStateMachine" id=13]
 states/idle/node = SubResource( 8 )
@@ -465,7 +468,7 @@ states/openaction/node = SubResource( 9 )
 states/openaction/position = Vector2( 338, 58 )
 states/opened_pose/node = SubResource( 10 )
 states/opened_pose/position = Vector2( 608, 71 )
-transitions = [ "idle", "openaction", SubResource( 11 ), "openaction", "opened_pose", SubResource( 12 ) ]
+transitions = [ "idle", "openaction", SubResource( 11 ), "openaction", "opened_pose", SubResource( 16 ) ]
 start_node = "idle"
 end_node = "opened_pose"
 
