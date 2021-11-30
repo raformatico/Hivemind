@@ -13,7 +13,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
-		show_me()
+		if visible:
+			hide_me()
+		else:
+			show_me()
 
 func show_me() -> void:
 	set_visible(true)
@@ -106,3 +109,8 @@ func _on_Back_pressed() -> void:
 	$BackgroundKeys.visible = false
 	hide_back_button()
 	show_buttons()
+
+
+func _on_Back_mouse_entered() -> void:
+	$Play.grab_focus()
+	$SelectorBack/SelectorAnimaiton.play("idle")
