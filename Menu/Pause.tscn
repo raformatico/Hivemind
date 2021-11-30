@@ -1,9 +1,56 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Menu/pause_menu_background.jpg" type="Texture" id=1]
 [ext_resource path="res://Menu/Pause.gd" type="Script" id=2]
 [ext_resource path="res://Menu/selector.png" type="Texture" id=3]
 [ext_resource path="res://Menu/keymap.jpg" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("SelectorBack:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "animation"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("SelectorBack:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 2.29739, 2.54912 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SelectorBack:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Pause" type="Control"]
 pause_mode = 2
@@ -107,6 +154,13 @@ texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SelectorAnimaiton" type="AnimationPlayer" parent="SelectorBack"]
+root_node = NodePath("../..")
+autoplay = "animation"
+anims/RESET = SubResource( 1 )
+anims/animation = SubResource( 2 )
+anims/idle = SubResource( 3 )
 
 [node name="Back" type="Button" parent="."]
 modulate = Color( 1, 1, 1, 0 )

@@ -1,0 +1,15 @@
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://1_Textures/pooball_normals.jpg" type="Texture" id=1]
+[ext_resource path="res://1_Textures/pooball_diffuse.jpg" type="Texture" id=2]
+
+[resource]
+albedo_color = Color( 0.556863, 0.45098, 0.45098, 1 )
+albedo_texture = ExtResource( 2 )
+roughness = 0.9
+normal_enabled = true
+normal_scale = 3.88
+normal_texture = ExtResource( 1 )
+clearcoat_enabled = true
+clearcoat = 1.0
+clearcoat_gloss = 0.85

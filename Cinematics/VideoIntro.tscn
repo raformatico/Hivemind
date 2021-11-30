@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Cinematics/VIDEO INTRO.webm" type="VideoStream" id=1]
+[ext_resource path="res://Cinematics/VideoIntro.gd" type="Script" id=2]
+[ext_resource path="res://UI/skip button.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 966.5, 549 )
+
+[node name="IntroVideo" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 956.5, 539 )
+shape = SubResource( 1 )
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+margin_right = 1916.0
+margin_bottom = 1081.0
+stream = ExtResource( 1 )
+autoplay = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="skip" type="TextureRect" parent="."]
+margin_left = 1460.0
+margin_top = 29.0
+margin_right = 1878.0
+margin_bottom = 69.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="gui_input" from="." to="." method="_on_IntroVideo_gui_input"]
+[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
+[connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
+[connection signal="gui_input" from="VideoPlayer" to="." method="_on_VideoPlayer_gui_input"]

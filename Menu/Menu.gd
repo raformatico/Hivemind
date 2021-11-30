@@ -10,7 +10,7 @@ func _ready() -> void:
 	$Play.grab_focus()
 
 func _on_Play_pressed() -> void:
-	get_tree().change_scene("res://Test/TestWorld-NearToPuzzle.tscn")
+	get_tree().change_scene("res://Cinematics/VideoIntro.tscn")
 
 
 func _on_Exit_pressed() -> void:

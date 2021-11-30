@@ -10,7 +10,8 @@ export var gravity_glide := 6
 export var jump := 5
 export var mouse_sense := 0.1
 export var joystick_sense := 1
-export var speed_default := 4
+export var speed_default := 1	
+export var speed_run := 4
 export var speed_glide := 12
 export var gliding_factor := 2
 
@@ -64,6 +65,9 @@ func on_lymph_picked() -> void:
 	emit_signal("lymph_changed", lymph)
 
 
+var playback_speed=1
+var animationPlayer=null
+
 func _ready() -> void:
 	glide_timer.wait_time = glide_max_time
 	glide_reset.wait_time = reset_max_time
@@ -83,6 +87,7 @@ func _ready() -> void:
 	elif get_node("bugattiv1") !=null:
 		body=$bugattiv1 	
 		characterAnimationTree=$bugattiv1/AnimationTree
+		animationPlayer=$bugattiv1/AnimationPlayer
 		animation_state = characterAnimationTree.get("parameters/playback")
 		animation_state.start("Idle_loop")
 		character_version="v1"
@@ -138,11 +143,7 @@ func _physics_process(delta: float) -> void:
 	var state_machine = characterAnimationTree["parameters/playback"]
 	match state:
 		states.IDLE:
-			if Input.is_action_just_pressed("mind_trick"):
-				state = states.MIND
-				emit_signal("in_mind")
-
-			elif Input.is_action_just_pressed("glide") and glide_reset.is_stopped():
+			if Input.is_action_just_pressed("glide") and glide_reset.is_stopped():
 				glide_timer.start()
 				state = states.GLIDE
 				animation_state.travel("Hover_loop")
@@ -154,8 +155,7 @@ func _physics_process(delta: float) -> void:
 				state=states.JUMP
 				animation_state.travel("Jump")							
 			elif velocity_.length() >0:
-				state=states.WALK		
-			pass
+				state=states.WALK
 			
 		states.GLIDE:
 			if Input.is_action_pressed("glide") and not glide_timer.is_stopped():
@@ -168,7 +168,8 @@ func _physics_process(delta: float) -> void:
 			else:
 				state=states.WALK
 
-		states.RUN:						
+		states.RUN:
+			speed = speed_run
 			if Input.is_action_just_pressed("jump") and is_on_floor() and glide_timer.is_stopped():
 				snap = Vector3.ZERO
 				gravity_vector = Vector3.UP * jump
@@ -180,6 +181,8 @@ func _physics_process(delta: float) -> void:
 				state = states.GLIDE
 				animation_state.travel("Hover_loop")
 				_on_glide()						
+			elif Input.is_action_just_released("run"):
+				state = states.IDLE
 			else:
 				# var state_machine = characterAnimationTree["parameters/playback"]
 				#print(velocity_.length())
@@ -187,6 +190,7 @@ func _physics_process(delta: float) -> void:
 					if velocity_.length()>0:
 						state_machine.travel("Moving_loop")
 						characterAnimationTree.set("parameters/Moving_loop/blend_position",velocity_.length())	
+						
 						#print(state_machine.get_travel_path("Jump"))
 						#characterAnimationTree["parameters/blend_position"].x=velocity_.length()
 					else:
@@ -194,7 +198,6 @@ func _physics_process(delta: float) -> void:
 						#print("Loop")
 						state=states.IDLE
 						state_machine.travel("Idle_loop")
-					pass
 		states.MIND:
 			body.rotation.y = camera_rotation
 			direction = Vector3.ZERO
@@ -238,12 +241,18 @@ func _physics_process(delta: float) -> void:
 				emit_signal("out_mind")"""
 			
 		states.JUMP:
+			speed = speed_default
 			if is_on_floor():
-				
 				state=states.WALK
 				# state_machine.travel("Mooving_loop")
-			pass
+			elif Input.is_action_just_pressed("glide") and glide_reset.is_stopped():
+				glide_timer.start()
+				emit_signal("glide_started", glide_max_time)
+				state = states.GLIDE
+				animation_state.travel("Hover_loop")
+				_on_glide()						
 		states.WALK:
+			speed = speed_default
 			if Input.is_action_just_pressed("jump") and is_on_floor() and glide_timer.is_stopped():
 				snap = Vector3.ZERO
 				gravity_vector = Vector3.UP * jump
@@ -254,13 +263,22 @@ func _physics_process(delta: float) -> void:
 				glide_timer.start()
 				state = states.GLIDE
 				animation_state.travel("Hover_loop")
-				_on_glide()						
+				_on_glide()
+			elif Input.is_action_pressed("run"):
+				state = states.RUN
 			else:
 				#print(velocity_.length())
 				if glide_timer.is_stopped() and is_on_floor():
 					if velocity_.length()>0:
+						if Input.is_action_pressed("run"):
+							speed=speed_run
+						else:
+							speed=speed_default
+	
 						state_machine.travel("Moving_loop")
 						characterAnimationTree.set("parameters/Moving_loop/blend_position",velocity_.length())	
+						
+						#animationPlayer.playback_speed=2*velocity_.length()/speed_default
 						#print(state_machine.get_travel_path("Jump"))
 						#characterAnimationTree["parameters/blend_position"].x=velocity_.length()
 					else:
@@ -293,7 +311,7 @@ func _physics_process(delta: float) -> void:
 	# velocity = velocity.linear_interpolate(direction * speed, friction * delta)
 	movement = velocity + gravity_vector
 	
-	move_and_slide_with_snap(movement, snap, Vector3.UP)
+	move_and_slide_with_snap(movement, snap, Vector3.UP, false, 4, PI/4, false)
 	
 
 	
@@ -391,7 +409,12 @@ func on_puzzle_entered(puzzle_transform_new : Transform, parent) -> void:
 func on_puzzle_exited() -> void:
 	puzzle_parent = null
 	
+func move_player_to_lake()-> void:
+	transform = get_node("../RespawnLakepoint").global_transform
+	#get_node("../RespawnLakepoint").global_transform.basis.get_euler()
+	#transform.origin = Vector3(88,0,-70)
+	#transform.basis.rotated(Vector3(0,1,0),deg2rad(-85))#rotation_degrees(Vector3(0,-85,0))
 	
-	
-	
-	
+
+func _on_fade_in_tween_all_completed() -> void:
+	move_player_to_lake()

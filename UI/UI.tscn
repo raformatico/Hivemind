@@ -33,7 +33,13 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="UI" type="MarginContainer"]
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 9 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 40.0
@@ -41,10 +47,6 @@ margin_top = 40.0
 margin_right = -40.0
 margin_bottom = -40.0
 mouse_filter = 2
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="stamina_fade" type="Tween" parent="."]
 
@@ -94,4 +96,16 @@ texture_over = ExtResource( 7 )
 texture_progress = ExtResource( 8 )
 fill_mode = 3
 
+[node name="fade_color" type="ColorRect" parent="."]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 0, 0, 0, 0 )
+
+[node name="fade_in" type="Tween" parent="fade_color"]
+
+[node name="fade_out" type="Tween" parent="fade_color"]
+
 [connection signal="tween_completed" from="stamina_tween_drain" to="." method="_on_stamina_tween_drain_tween_completed"]
+[connection signal="tween_all_completed" from="fade_color/fade_in" to="." method="_on_fade_in_tween_all_completed"]
+[connection signal="tween_completed" from="fade_color/fade_out" to="." method="_on_fade_out_tween_completed"]
