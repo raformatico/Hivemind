@@ -86,13 +86,13 @@ func _ready():
 		j += 1
 	
 	#Time to start playing a song
-	#play_song(cur_song)
+	play_song(cur_song)
 	current_step = 0
 	
 	#Wind effect is played perpetually...
 	wind.stream = songlist["wind"]
 	wind.volume_db = -1.0
-	#wind.play()
+	wind.play()
 	set_process(false)
 
 
