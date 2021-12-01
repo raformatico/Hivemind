@@ -18,16 +18,23 @@ _global_script_classes=[ {
 "class": "Player_old",
 "language": "GDScript",
 "path": "res://Player/PlayerBug_old.gd"
+}, {
+"base": "KinematicBody",
+"class": "Player_older",
+"language": "GDScript",
+"path": "res://Player/PlayerBug_oler.gd"
 } ]
 _global_script_class_icons={
 "Player": "",
-"Player_old": ""
+"Player_old": "",
+"Player_older": ""
 }
 
 [application]
 
 config/name="Hivemind"
 run/main_scene="res://Menu/Menu.tscn"
+config/icon="res://icono-hivemind.png"
 config/windows_native_icon="res://icon.ico"
 
 [autoload]
@@ -135,8 +142,8 @@ mind_connection={
 }
 run={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":7,"pressure":0.0,"pressed":false,"script":null)
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":7,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777237,"unicode":0,"echo":false,"script":null)
  ]
 }
 skip={
