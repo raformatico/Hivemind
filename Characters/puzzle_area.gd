@@ -11,9 +11,11 @@ func _ready() -> void:
 
 func _on_puzzle_area_body_entered(body: Node) -> void:
 	if body is Player:
+		print("Enter")
 		Global.emit_signal("puzzle_entered",self.global_transform, get_parent())
 
 
 func _on_puzzle_area_body_exited(body: Node) -> void:
 	if body is Player:
+		print("Exit")
 		Global.emit_signal("puzzle_exited")
