@@ -130,7 +130,7 @@ func _physics_process(delta: float) -> void:
 		var rayOrigin = camera.camera.project_ray_origin(center)
 		var rayEnd = rayOrigin + camera.camera.project_ray_normal(center) * 200
 		var intersection = space_state.intersect_ray(rayOrigin, rayEnd)
-		if not intersection.empty() and intersection.collider == puzzle_parent:
+		if not intersection.empty() and (intersection.collider == puzzle_parent or intersection.collider.is_in_group("Nest")):
 			emit_signal("change_cursor","hold_RMB",1)
 			if Input.is_action_just_pressed("mind_connection"):
 				emit_signal("in_mind")
