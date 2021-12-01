@@ -1,9 +1,9 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Player/Bugatti V1/Material_001.material" type="Material" id=1]
 [ext_resource path="res://Player/Bugatti V1/BUGATTI_ACTIONS_V1.glb" type="PackedScene" id=2]
 [ext_resource path="res://Player/bugatti/sound_logic.gd" type="Script" id=3]
-[ext_resource path="res://Audio/sfx/step4.wav" type="AudioStream" id=4]
+[ext_resource path="res://Audio/sfx/step3.wav" type="AudioStream" id=4]
 
 [sub_resource type="AnimationNodeAnimation" id=1]
 animation = "Connect·loop"
@@ -17,47 +17,16 @@ animation = "Idle·loop"
 [sub_resource type="AnimationNodeAnimation" id=4]
 animation = "Jump"
 
-[sub_resource type="AnimationNodeAnimation" id=5]
-animation = "Idle·loop"
-
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=23]
 animation = "Run·loop"
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=24]
 animation = "Walk·loop"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id=8]
-blend_point_0/node = SubResource( 5 )
-blend_point_0/pos = 0.0
-blend_point_1/node = SubResource( 6 )
-blend_point_1/pos = 4.0
-blend_point_2/node = SubResource( 7 )
-blend_point_2/pos = 1.0
-max_space = 12.0
-value_label = "Speed"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=9]
-xfade_time = 0.2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=10]
-xfade_time = 1.0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=11]
 xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=12]
-xfade_time = 0.1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=13]
-xfade_time = 1.0
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=14]
-xfade_time = 1.0
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=15]
-xfade_time = 0.1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=16]
 xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
@@ -72,18 +41,53 @@ xfade_time = 0.3
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 xfade_time = 0.5
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+xfade_time = 0.1
+
 [sub_resource type="AnimationNodeStateMachine" id=21]
 states/Connect_loop/node = SubResource( 1 )
-states/Connect_loop/position = Vector2( -55, 158 )
+states/Connect_loop/position = Vector2( -126, 203 )
 states/Hover_loop/node = SubResource( 2 )
 states/Hover_loop/position = Vector2( 203, -47 )
 states/Idle_loop/node = SubResource( 3 )
-states/Idle_loop/position = Vector2( 34, 23 )
+states/Idle_loop/position = Vector2( -81, 61 )
 states/Jump/node = SubResource( 4 )
-states/Jump/position = Vector2( 120, 169 )
-states/Moving_loop/node = SubResource( 8 )
-states/Moving_loop/position = Vector2( 302, 30 )
-transitions = [ "Idle_loop", "Moving_loop", SubResource( 9 ), "Moving_loop", "Idle_loop", SubResource( 10 ), "Idle_loop", "Connect_loop", SubResource( 11 ), "Connect_loop", "Idle_loop", SubResource( 12 ), "Moving_loop", "Hover_loop", SubResource( 13 ), "Hover_loop", "Moving_loop", SubResource( 14 ), "Moving_loop", "Jump", SubResource( 15 ), "Jump", "Moving_loop", SubResource( 16 ), "Idle_loop", "Jump", SubResource( 17 ), "Idle_loop", "Hover_loop", SubResource( 18 ), "Jump", "Hover_loop", SubResource( 19 ), "Hover_loop", "Idle_loop", SubResource( 20 ) ]
+states/Jump/position = Vector2( 102, 227 )
+states/Run_loop/node = SubResource( 23 )
+states/Run_loop/position = Vector2( 621.214, 291.96 )
+states/Walk_loop/node = SubResource( 24 )
+states/Walk_loop/position = Vector2( 691.214, -28.04 )
+transitions = [ "Idle_loop", "Connect_loop", SubResource( 11 ), "Connect_loop", "Idle_loop", SubResource( 12 ), "Idle_loop", "Jump", SubResource( 17 ), "Idle_loop", "Hover_loop", SubResource( 18 ), "Jump", "Hover_loop", SubResource( 19 ), "Hover_loop", "Idle_loop", SubResource( 20 ), "Walk_loop", "Hover_loop", SubResource( 26 ), "Hover_loop", "Walk_loop", SubResource( 27 ), "Walk_loop", "Run_loop", SubResource( 28 ), "Run_loop", "Walk_loop", SubResource( 29 ), "Run_loop", "Jump", SubResource( 30 ), "Jump", "Run_loop", SubResource( 31 ), "Jump", "Walk_loop", SubResource( 32 ), "Walk_loop", "Jump", SubResource( 33 ), "Idle_loop", "Walk_loop", SubResource( 34 ), "Walk_loop", "Idle_loop", SubResource( 35 ), "Run_loop", "Idle_loop", SubResource( 36 ) ]
 start_node = "Idle_loop"
 graph_offset = Vector2( -290.786, -86.04 )
 
@@ -103,7 +107,6 @@ tree_root = SubResource( 21 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 22 )
-parameters/Moving_loop/blend_position = 4.19357
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
 stream = ExtResource( 4 )

@@ -18,8 +18,8 @@ func _ready():
 
 
 func _on_LarvaeZone_body_entered(body):
-	AudioEngine.crossfade_to_song(in_song, 2)
+	AudioEngine.crossfade_to_song(in_song, 3)
 
 
 func _on_LarvaeZone_body_exited(body):
-	AudioEngine.crossfade_to_song(out_song, 2)
+	AudioEngine.crossfade_to_song(out_song, 3)

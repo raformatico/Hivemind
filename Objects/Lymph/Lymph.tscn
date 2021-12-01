@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Objects/Lymph/Lymph.gd" type="Script" id=1]
 [ext_resource path="res://3_Materials/Lymph.tres" type="Material" id=2]
@@ -11,6 +11,11 @@ radius = 0.262519
 [sub_resource type="SphereMesh" id=3]
 radius = 0.2
 height = 0.4
+
+[sub_resource type="SpatialMaterial" id=185]
+flags_transparent = true
+flags_unshaded = true
+albedo_color = Color( 1, 0.964706, 0, 0.486275 )
 
 [node name="Lymph" type="Area"]
 script = ExtResource( 1 )
@@ -26,5 +31,14 @@ material/0 = null
 [node name="Lymph_3" type="MeshInstance" parent="."]
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 94.728, 0 )
+cast_shadow = 0
+use_in_baked_light = true
+invert_faces = true
+radius = 0.0642092
+height = 189.414
+material = SubResource( 185 )
 
 [connection signal="body_entered" from="." to="." method="_on_Lymph_body_entered"]

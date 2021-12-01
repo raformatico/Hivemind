@@ -11,7 +11,7 @@ export var jump := 5
 export var mouse_sense := 0.1
 export var joystick_sense := 1
 export var speed_default := 1
-export var speed_thr_default := 0
+export var speed_thr_default := 0.1
 export var speed_run := 4
 export var speed_glide := 12
 export var gliding_factor := 2
@@ -164,7 +164,10 @@ func _physics_process(delta: float) -> void:
 				animation_state.travel("Jump")							
 			elif velocity_.length_squared() > speed_thr:
 				state=states.WALK
-			
+				state_machine.travel("Walk_loop")
+			else:
+				state_machine.travel("Idle_loop")
+				
 		states.GLIDE:
 			if Input.is_action_pressed("glide") and not glide_timer.is_stopped():
 				_on_glide()
@@ -191,14 +194,15 @@ func _physics_process(delta: float) -> void:
 				_on_glide()						
 			elif Input.is_action_just_released("run"):
 				state = states.IDLE
-				print("idle")
+				state_machine.travel("Idle_loop")
 			else:
 				# var state_machine = characterAnimationTree["parameters/playback"]
 				#print(velocity_.length())
 				if glide_timer.is_stopped() and is_on_floor():
 					if velocity_.length_squared() > speed_thr:
-						state_machine.travel("Moving_loop")
-						characterAnimationTree.set("parameters/Moving_loop/blend_position",velocity_.length())	
+						state_machine.travel("Run_loop")
+						
+						### characterAnimationTree.set("parameters/Moving_loop/blend_position",velocity_.length())	
 						
 						#print(state_machine.get_travel_path("Jump"))
 						#characterAnimationTree["parameters/blend_position"].x=velocity_.length()
@@ -207,7 +211,8 @@ func _physics_process(delta: float) -> void:
 						#print("Loop")
 						## velocity = Vector3.ZERO
 						state=states.IDLE
-						state_machine.travel("Idle_loop")
+						### state_machine.travel("Idle_loop")
+						state_machine.travel("Walk_loop") 
 		states.MIND:
 			body.rotation.y = camera_rotation
 			direction = Vector3.ZERO
@@ -237,7 +242,7 @@ func _physics_process(delta: float) -> void:
 				emit_signal("move_puzzle",Vector3.ZERO)
 				emit_signal("out_mind")
 				state=states.IDLE
-				animation_state.travel("idle_loop")
+				animation_state.travel("Idle_loop")
 			"""if Input.is_action_just_released("mind_connection"):
 				if last_intersection != null:
 					emit_signal("move_puzzle",Vector3.ZERO)
@@ -277,18 +282,19 @@ func _physics_process(delta: float) -> void:
 				_on_glide()
 			elif Input.is_action_pressed("run"):
 				state = states.RUN
-				print("run")
+				state_machine.travel("Run_loop") ###
 			else:
 				#print(velocity_.length())
 				if glide_timer.is_stopped() and is_on_floor():
 					if velocity_.length_squared() > speed_thr_default:
 						if Input.is_action_pressed("run"):
 							speed=speed_run
+							state_machine.travel("Run_loop") ###
 						else:
 							speed=speed_default
-
-						state_machine.travel("Moving_loop")
-						characterAnimationTree.set("parameters/Moving_loop/blend_position",velocity_.length())	
+							state_machine.travel("Walk_loop")
+							
+						### characterAnimationTree.set("parameters/Moving_loop/blend_position",velocity_.length())	
 						
 						#animationPlayer.playback_speed=2*velocity_.length()/speed_default
 						#print(state_machine.get_travel_path("Jump"))
