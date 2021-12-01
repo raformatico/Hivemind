@@ -124,13 +124,11 @@ func walk_step():
 #Play a new SFX effect
 func play_sfx(sfxname:String):
 	if not sfx.playing:
-		print("start")
 		#sfx.volume_db = 0.0
 		sfx.stream = sfxlist[sfxname]
 		sfx.play()
 
 func stop_sfx():
-	print("stop")
 	#sfx.volume_db = silence_volume
 	sfx.stop()
 

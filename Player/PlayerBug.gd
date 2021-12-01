@@ -66,6 +66,10 @@ func set_lymph(new_lymph : int) -> void:
 func on_lymph_picked() -> void:
 	lymph += 1
 	emit_signal("lymph_changed", lymph)
+	if lymph == 5:
+		Global.lymph_completed = true
+		if Global.player_in_area_final:
+			get_tree().change_scene("videofinal")
 
 
 var playback_speed=1
