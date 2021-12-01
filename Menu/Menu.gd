@@ -6,13 +6,18 @@ onready var play_exit := $SelectorExit
 onready var background_keys := $BackgroundKeys
 
 
+export var ordenador_de_victor=false
+
 func _ready() -> void:
 	$Play.grab_focus()
 
 func _on_Play_pressed() -> void:
 	AudioEngine.fade_out(1.0)
-	get_tree().change_scene("res://Test/TestWorld-NearToPuzzle.tscn")
-
+	#get_tree().change_scene("res://Test/TestWorld-NearToPuzzle.tscn")
+	if ordenador_de_victor:
+		get_tree().change_scene("res://Test/TestWorld-NearToPuzzle.tscn")
+	else:
+		get_tree().change_scene("res://World/full_scenario/HIVEMIND WORLD_03.tscn")
 
 func _on_Exit_pressed() -> void:
 	get_tree().quit()
