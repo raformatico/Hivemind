@@ -18,7 +18,7 @@ func _on_Play_pressed() -> void:
 	if ordenador_de_victor:
 		get_tree().change_scene("res://Test/TestWorld-NearToPuzzle.tscn")
 	else:
-		get_tree().change_scene("res://World/full_scenario/HIVEMIND WORLD_03.tscn")
+		get_tree().change_scene("res://Cinematics/VideoIntro.tscn")
 
 func _on_Exit_pressed() -> void:
 	get_tree().quit()
