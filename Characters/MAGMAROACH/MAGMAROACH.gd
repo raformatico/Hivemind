@@ -7,6 +7,8 @@ var direction : Vector3 = Vector3.ZERO
 var general_direction : Vector3 = Vector3.ZERO
 var specific_direction : Vector3 = Vector3.ZERO
 var velocity : Vector3 = Vector3.ZERO
+var gravity_default := 9.8
+var gravity_vector : Vector3 = Vector3.DOWN
 export var acceleration : float = 5
 export var specific_direction_multiplier : float = 3
 export var general_direction_multiplier : float = 1
@@ -27,7 +29,8 @@ func _physics_process(delta: float) -> void:
 		direction = (general_direction_multiplier * general_direction + specific_direction_multiplier * specific_direction).normalized()
 		look_at(global_transform.origin + direction,Vector3.UP)
 		velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
-		move_and_slide_with_snap(velocity, -get_floor_normal(), Vector3.UP, false, 4, PI/4, false)
+		gravity_vector += Vector3.DOWN * gravity_default * delta
+		move_and_slide_with_snap(velocity + gravity_vector, -get_floor_normal(), Vector3.UP, false, 4, PI/4, false)
 	#else:
 	#	$AnimationPlayer.play("Magmaroach")
 
