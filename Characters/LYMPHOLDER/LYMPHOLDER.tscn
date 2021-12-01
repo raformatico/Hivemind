@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Characters/LYMPHOLDER/LYMPHOLDER.gd" type="Script" id=1]
 [ext_resource path="res://Characters/LYMPHOLDER/Material.material" type="Material" id=2]
@@ -278,6 +278,102 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector3( 0, 0.496368, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("petal:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.907976, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("petal:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("petal2:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.0454076, 0.490418, 0.271632 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("petal2:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 3.70584, -94.4473, 89.712 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("petal3:translation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.915292, -0.0741647, -0.00984256 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("petal3:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 3.22259, -178.389, 1.48379 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("petal4:translation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.0961064, 0.497461, -0.386103 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("petal4:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 3.70584, -94.4473, 80.07 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "openaction"
@@ -380,10 +476,106 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 2.8, 6.6 ),
+"times": PoolRealArray( 0, 2.8, 6.6, 6.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.496368, 0 ), Vector3( 0, 0.496368, 0 ), Vector3( 0, -0.302913, 0 ), Vector3( 0, -0.444125, 0 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("petal:translation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 1.7, 3.5, 6.6, 6.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.221135, 0.501835, 0 ), Vector3( 0.221135, 0.501835, 0 ), Vector3( 0.638864, 0.528972, 0 ), Vector3( 0.895858, 0.0107372, 0 ), Vector3( 0.907976, 0, 0 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("petal:rotation_degrees")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 1.7, 3.5, 6.6, 6.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 93.717 ), Vector3( 0, 0, 93.717 ), Vector3( 0, 0, 66.464 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("petal2:translation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 2.3, 6.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0.496368, 0 ), Vector3( 0, 0.496368, 0 ), Vector3( 0, -0.302913, 0 ) ]
+"values": [ Vector3( 0.0454076, 0.490418, 0.271632 ), Vector3( 0.0454076, 0.490418, 0.271632 ), Vector3( 0.0255536, -0.0181977, 0.951737 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("petal2:rotation_degrees")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 2.3, 6.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 3.70584, -94.4473, 89.712 ), Vector3( 3.70584, -94.4473, 89.712 ), Vector3( 3.70584, -94.4473, 2.84197 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("petal3:translation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 2, 6.6, 6.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.253823, 0.422939, -0.0564417 ), Vector3( -0.253823, 0.422939, -0.0564417 ), Vector3( -0.901932, -0.0629442, -0.0108424 ), Vector3( -0.921986, -0.0362037, -0.0117926 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("petal3:rotation_degrees")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 2, 6.6, 6.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 3.22259, -178.389, 90.8678 ), Vector3( 3.22259, -178.389, 90.8678 ), Vector3( 3.223, -178.389, 5.469 ), Vector3( 3.22259, -178.389, 0.00280038 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("petal4:translation")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 2.2, 6.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.0961064, 0.497461, -0.386103 ), Vector3( 0.0961064, 0.497461, -0.386103 ), Vector3( 0.174316, -0.0260292, -0.954416 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("petal4:rotation_degrees")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 2.2, 6.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 3.70584, -94.4473, 80.07 ), Vector3( 3.70584, -94.4473, 80.07 ), Vector3( 4.4811, -88.2064, 173.131 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -490,7 +682,7 @@ tracks/13/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 0, -0.302913, 0 ) ]
+"values": [ Vector3( 0, -0.431669, 0 ) ]
 }
 
 [sub_resource type="SphereShape" id=7]
@@ -527,6 +719,9 @@ end_node = "opened_pose"
 
 [sub_resource type="SphereShape" id=15]
 radius = 3.0
+
+[sub_resource type="BoxShape" id=18]
+extents = Vector3( 0.838785, 0.263093, 0.457755 )
 
 [node name="LYMPHOLDER" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -627,5 +822,21 @@ parameters/playback = SubResource( 14 )
 
 [node name="CollisionShape" type="CollisionShape" parent="PlayerDetector"]
 shape = SubResource( 15 )
+
+[node name="petal" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907976, 0, 0 )
+shape = SubResource( 18 )
+
+[node name="petal2" type="CollisionShape" parent="."]
+transform = Transform( -0.0648284, 0.0772175, -0.994904, 0.997896, 0.00501648, -0.064634, 4.19095e-08, -0.997002, -0.0773803, 0.0454076, 0.490418, 0.271632 )
+shape = SubResource( 18 )
+
+[node name="petal4" type="CollisionShape" parent="."]
+transform = Transform( -0.0768459, 0.0652684, -0.994904, 0.982959, 0.172085, -0.064634, 0.166989, -0.982917, -0.0773803, 0.0961064, 0.497461, -0.386103 )
+shape = SubResource( 18 )
+
+[node name="petal3" type="CollisionShape" parent="."]
+transform = Transform( -0.99931, 0.0243045, -0.0280623, 0.0258532, 0.998084, -0.0562151, 0.0266422, -0.0569018, -0.998024, -0.915292, -0.0741647, -0.00984256 )
+shape = SubResource( 18 )
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]

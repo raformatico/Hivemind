@@ -22,7 +22,7 @@ var direction = Vector3()
 var velocity = Vector3()
 var gravity_vector = Vector3()
 var movement = Vector3()
-var lymph: int = 4 setget set_lymph, get_lymph
+var lymph: int = 0 setget set_lymph, get_lymph
 
 signal in_mind
 signal out_mind

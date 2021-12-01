@@ -3,7 +3,7 @@
 [ext_resource path="res://Player/Bugatti V1/Material_001.material" type="Material" id=1]
 [ext_resource path="res://Player/Bugatti V1/BUGATTI_ACTIONS_V1.glb" type="PackedScene" id=2]
 [ext_resource path="res://Player/bugatti/sound_logic.gd" type="Script" id=3]
-[ext_resource path="res://Audio/sfx/step2.wav" type="AudioStream" id=4]
+[ext_resource path="res://Audio/sfx/step4.wav" type="AudioStream" id=4]
 
 [sub_resource type="AnimationNodeAnimation" id=1]
 animation = "Connect·loop"
