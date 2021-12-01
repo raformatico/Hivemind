@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Characters/MAGMAROACH/Material_001.material" type="Material" id=1]
+[ext_resource path="res://Characters/MAGMAROACH/MAGMAROACH.gd" type="Script" id=2]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "MAGMAROACH_Cube001"
@@ -613,6 +614,7 @@ radius = 0.375896
 height = 0.474608
 
 [node name="MAGMAROACH" type="KinematicBody"]
+script = ExtResource( 2 )
 
 [node name="Armature" type="Spatial" parent="."]
 
@@ -801,3 +803,16 @@ anims/Magmaroach = SubResource( 3 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423981, 0.1426 )
 shape = SubResource( 5 )
+
+[node name="change_speed" type="Timer" parent="."]
+one_shot = true
+
+[node name="change_general_direction" type="Timer" parent="."]
+one_shot = true
+
+[node name="change_specific_direction" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="change_speed" to="." method="_on_change_speed_timeout"]
+[connection signal="timeout" from="change_general_direction" to="." method="_on_change_general_direction_timeout"]
+[connection signal="timeout" from="change_specific_direction" to="." method="_on_change_specific_direction_timeout"]
