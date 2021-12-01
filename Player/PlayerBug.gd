@@ -33,8 +33,8 @@ signal glide_started(glide_time)
 signal glide_restarted(reset_time)
 
 
-export var glide_max_time : float = 10
-export var reset_max_time : float = 3
+export var glide_max_time : float = 3
+export var reset_max_time : float = 0.8
 onready var acceleration := acceleration_floor
 onready var speed := speed_default
 onready var speed_thr := speed_thr_default
@@ -151,13 +151,13 @@ func _physics_process(delta: float) -> void:
 	var state_machine = characterAnimationTree["parameters/playback"]
 	match state:
 		states.IDLE:
-			if Input.is_action_just_pressed("glide") and glide_reset.is_stopped():
+			"""if Input.is_action_just_pressed("glide") and glide_reset.is_stopped():
 				glide_timer.start()
 				state = states.GLIDE
 				animation_state.travel("Hover_loop")
-				_on_glide()
+				_on_glide()"""
 	
-			elif Input.is_action_just_pressed("jump") and is_on_floor() and glide_timer.is_stopped():
+			if Input.is_action_just_pressed("jump") and is_on_floor() and glide_timer.is_stopped():
 				snap = Vector3.ZERO
 				gravity_vector = Vector3.UP * jump
 				state=states.JUMP
@@ -186,7 +186,7 @@ func _physics_process(delta: float) -> void:
 				gravity_vector = Vector3.UP * jump
 				state=states.JUMP
 				animation_state.travel("Jump")
-			elif Input.is_action_just_pressed("glide") and glide_reset.is_stopped():
+			elif Input.is_action_pressed("glide") and glide_reset.is_stopped():
 				glide_timer.start()
 				emit_signal("glide_started", glide_max_time)
 				state = states.GLIDE
@@ -274,7 +274,7 @@ func _physics_process(delta: float) -> void:
 				gravity_vector = Vector3.UP * jump
 				state=states.JUMP
 				animation_state.travel("Jump")	
-			elif Input.is_action_just_pressed("glide") and glide_reset.is_stopped():
+			elif Input.is_action_pressed("glide") and glide_reset.is_stopped():
 				emit_signal("glide_started", glide_max_time)
 				glide_timer.start()
 				state = states.GLIDE
@@ -431,7 +431,7 @@ func on_puzzle_exited() -> void:
 	
 func move_player_to_lake()-> void:
 	transform = get_node("../RespawnLakepoint").global_transform
-	camera.rotation_degrees = Vector3(0,-70,0)
+	camera.rotation_degrees = Vector3(0,110,0)
 	body.rotation.y = camera.get_global_transformation().basis.get_euler().y
 	#get_node("../RespawnLakepoint").global_transform.basis.get_euler()
 	#transform.origin = Vector3(88,0,-70)

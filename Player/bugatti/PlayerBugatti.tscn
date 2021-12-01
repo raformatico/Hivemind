@@ -23,11 +23,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 far = 740.8
 
 [node name="glide_timer" type="Timer" parent="." index="4"]
-wait_time = 10.0
+wait_time = 3.0
 one_shot = true
 
 [node name="glide_reset" type="Timer" parent="." index="5"]
-wait_time = 3.0
+wait_time = 0.8
 one_shot = true
 
 [connection signal="in_mind" from="." to="Camera" method="_on_Player_in_mind"]
