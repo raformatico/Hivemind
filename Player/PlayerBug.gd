@@ -22,7 +22,7 @@ var direction = Vector3()
 var velocity = Vector3()
 var gravity_vector = Vector3()
 var movement = Vector3()
-var lymph: int = 0 setget set_lymph, get_lymph
+var lymph: int = 4 setget set_lymph, get_lymph
 
 signal in_mind
 signal out_mind
@@ -69,7 +69,7 @@ func on_lymph_picked() -> void:
 	if lymph == 5:
 		Global.lymph_completed = true
 		if Global.player_in_area_final:
-			get_tree().change_scene("videofinal")
+			get_tree().change_scene("res://Menu/ending.tscn")
 
 
 var playback_speed=1

@@ -9,6 +9,7 @@ onready var background_keys := $BackgroundKeys
 export var ordenador_de_victor=false
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	$Play.grab_focus()
 
 func _on_Play_pressed() -> void:

@@ -15,7 +15,7 @@ func _on_PlayerWith5LymphDetector_body_entered(body: Node) -> void:
 	if body is Player:
 		Global.player_in_area_final = true
 		if Global.lymph_completed:
-			get_tree().change_scene("videofinal")
+			get_tree().change_scene("res://Menu/ending.tscn")
 
 
 func _on_PlayerWith5LymphDetector_body_exited(body: Node) -> void:
