@@ -188,7 +188,7 @@ tracks/8/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 3.55271e-14, 0, 1, 1, 1, 1, 20,
 radius = 0.317286
 height = 1.46865
 
-[node name="Chordworm" type="KinematicBody" groups=["Puzzle"]]
+[node name="Chordworm" type="KinematicBody" groups=["ChordWorm", "Puzzle"]]
 script = ExtResource( 2 )
 
 [node name="Armature" type="Spatial" parent="."]
@@ -253,3 +253,5 @@ anims/ChordwormStopped = SubResource( 3 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.847773 )
 shape = SubResource( 5 )
+
+[node name="Tween" type="Tween" parent="."]
