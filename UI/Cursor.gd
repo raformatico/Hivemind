@@ -37,3 +37,7 @@ func _on_Player_change_cursor(cursor_anim, speed) -> void:
 	if not cursor_anim == "":
 		cursor.animation = cursor_anim
 	cursor.speed_scale = speed
+
+
+func _on_puzzle_larvae_body_exited(body: Node) -> void:
+	pass # Replace with function body.

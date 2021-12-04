@@ -817,6 +817,8 @@ one_shot = true
 one_shot = true
 
 [node name="Player_Detector" type="Area" parent="."]
+collision_layer = 2
+collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Player_Detector"]

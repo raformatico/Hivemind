@@ -46,6 +46,7 @@ AudioEngine="*res://Audio/AudioEngine.gd"
 
 window/size/width=1920
 window/size/height=1080
+window/size/fullscreen=true
 window/size/test_width=1440
 window/size/test_height=810
 window/stretch/mode="viewport"
@@ -152,6 +153,12 @@ skip={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="world"
+3d_physics/layer_2="bugs"
+3d_physics/layer_3="player"
 
 [physics]
 
