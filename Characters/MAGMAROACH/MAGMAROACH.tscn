@@ -617,6 +617,8 @@ height = 0.474608
 radius = 30.0
 
 [node name="MAGMAROACH" type="KinematicBody"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="Armature" type="Spatial" parent="."]

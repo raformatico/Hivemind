@@ -46,7 +46,6 @@ AudioEngine="*res://Audio/AudioEngine.gd"
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
 window/size/test_width=1440
 window/size/test_height=810
 window/stretch/mode="viewport"

@@ -76,7 +76,7 @@ var playback_speed=1
 var animationPlayer=null
 
 func _ready() -> void:
-	move_player_to_lake()
+	#move_player_to_lake()
 	glide_timer.wait_time = glide_max_time
 	glide_reset.wait_time = reset_max_time
 	Global.connect("lymph_picked", self, "on_lymph_picked")

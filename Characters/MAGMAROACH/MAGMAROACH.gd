@@ -27,13 +27,19 @@ func _physics_process(delta: float) -> void:
 	if player_on_area:
 		#Get Direction
 		direction = (general_direction_multiplier * general_direction + specific_direction_multiplier * specific_direction).normalized()
-		look_at(global_transform.origin + direction,Vector3.UP)
+		#look_at(global_transform.origin + direction,Vector3.UP)
 		velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
 		gravity_vector += Vector3.DOWN * gravity_default * delta
+		#move(velocity, gravity_vector)
 		move_and_slide_with_snap(velocity + gravity_vector, -get_floor_normal(), Vector3.UP, false, 4, PI/4, false)
 	#else:
 	#	$AnimationPlayer.play("Magmaroach")
 
+func move(velocity,gravity_vector) -> void:
+	move_and_slide_with_snap(velocity + gravity_vector, -get_floor_normal(), Vector3.UP, false, 4, PI/4, false)
+
+func my_look(direction) -> void:
+	look_at(global_transform.origin + direction,Vector3.UP)
 
 func _on_change_speed_timeout() -> void:
 	if player_on_area:
@@ -47,6 +53,8 @@ func _on_change_general_direction_timeout() -> void:
 		general_direction = Vector3(rand_range(-1,1),0,rand_range(-1,1)).normalized()
 		change_general_timer.wait_time = change_general * rand_range(0.5,1.5)
 		change_general_timer.start()
+		direction = (general_direction_multiplier * general_direction + specific_direction_multiplier * specific_direction).normalized()
+		look_at(global_transform.origin + direction,Vector3.UP)
 
 
 func _on_change_specific_direction_timeout() -> void:
@@ -54,6 +62,8 @@ func _on_change_specific_direction_timeout() -> void:
 		specific_direction = Vector3(rand_range(-1,1),0,rand_range(-1,1)).normalized()
 		change_specific_timer.wait_time = change_specific * rand_range(0.5,1.5)
 		change_specific_timer.start()
+		direction = (general_direction_multiplier * general_direction + specific_direction_multiplier * specific_direction).normalized()
+		look_at(global_transform.origin + direction,Vector3.UP)
 
 
 func _on_Player_Detector_body_entered(body: Node) -> void:
@@ -67,6 +77,8 @@ func _on_Player_Detector_body_entered(body: Node) -> void:
 			change_specific_timer.start()
 			change_general_timer.wait_time = change_general * rand_range(0.5,1.5)
 			change_general_timer.start()
+			direction = (general_direction_multiplier * general_direction + specific_direction_multiplier * specific_direction).normalized()
+			look_at(global_transform.origin + direction,Vector3.UP)
 
 
 func _on_Player_Detector_body_exited(body: Node) -> void:
